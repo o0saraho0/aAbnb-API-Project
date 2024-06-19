@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![alt text](schema_Sarah.png)
+![alt text](<images/aAbnb schema.png>)
 
 ## API Documentation
 

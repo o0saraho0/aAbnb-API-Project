@@ -95,18 +95,14 @@ module.exports = {
     return queryInterface.bulkDelete(
       options,
       {
-        name: {
+        address: {
           [Op.in]: [
-            "JohnD",
-            "JaneS",
-            "AliceJ",
-            "RobertB",
-            "EmilyD",
-            "MichaelM",
-            "SarahW",
-            "DavidT",
-            "LauraA",
-            "JamesT",
+            "456 Oak Avenue",
+            "789 Pine Road",
+            "321 Birch Lane",
+            "101 Ocean Drive",
+            "202 Shoreline Blvd",
+            "303 Seaside Avenue",
           ],
         },
       },

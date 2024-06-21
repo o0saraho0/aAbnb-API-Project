@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       Spot.belongsTo(models.User, {
         foreignKey: "ownerId",
       });
+      Spot.hasMany(models.Review, {
+        foreignKey: "spotId",
+        onDelete: "CASCADE",
+      });
       // define association here
     }
   }
@@ -23,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       address: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       city: {
         type: DataTypes.STRING,

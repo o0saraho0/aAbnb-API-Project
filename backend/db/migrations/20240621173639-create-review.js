@@ -1,7 +1,5 @@
 "use strict";
 
-const { defaultValueSchemable } = require("sequelize/lib/utils");
-
 let options = {};
 if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
@@ -10,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
-      "Spots",
+      "Reviews",
       {
         id: {
           allowNull: false,
@@ -18,47 +16,22 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
-        ownerId: {
+        spotId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: { model: "Spots" },
+        },
+        userId: {
           type: Sequelize.INTEGER,
           allowNull: false,
           references: { model: "Users" },
-          onDelete: "CASCADE",
         },
-        address: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          unique: true,
-        },
-        city: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        state: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        country: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        lat: {
-          type: Sequelize.DECIMAL,
-          allowNull: false,
-        },
-        lng: {
-          type: Sequelize.DECIMAL,
-          allowNull: false,
-        },
-        name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        description: {
+        review: {
           type: Sequelize.TEXT,
-          allowNull: true,
+          allowNull: false,
         },
-        price: {
-          type: Sequelize.DECIMAL,
+        stars: {
+          type: Sequelize.INTEGER,
           allowNull: false,
         },
         createdAt: {
@@ -76,7 +49,7 @@ module.exports = {
     );
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Spots";
+    options.tableName = "Reviews";
     return queryInterface.dropTable(options);
   },
 };

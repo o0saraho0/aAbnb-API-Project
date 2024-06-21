@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Validator } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Spot extends Model {
     /**
@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         hooks: true,
       });
       Spot.hasMany(models.SpotImage, {
+        foreignKey: "spotId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
+      Spot.hasMany(models.Booking, {
         foreignKey: "spotId",
         onDelete: "CASCADE",
         hooks: true,

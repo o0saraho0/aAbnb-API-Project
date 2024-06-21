@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
 }
 
-const reviewsData = [
+const reviewData = [
   {
     spotId: 1,
     userId: 10,
@@ -55,12 +55,12 @@ const reviewsData = [
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await Review.bulkCreate(reviewsData, { validate: true });
+    await Review.bulkCreate(reviewData, { validate: true });
   },
 
   async down(queryInterface, Sequelize) {
     options.tableName = "Reivews";
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete(options, reviewsData, {});
+    return queryInterface.bulkDelete(options, reviewData, {});
   },
 };

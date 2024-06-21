@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         references: { model: "Spots" },
       });
-      // define association here
+      User.hasMany(models.Booking, {
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
     }
   }
 

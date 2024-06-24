@@ -15,6 +15,8 @@ const reviewImageData = [
   { reviewId: 4, url: "images/beachhouse1.jpg" },
   { reviewId: 5, url: "images/beachhouse2.jpg" },
   { reviewId: 5, url: "images/beachhouse3.jpg" },
+  { reviewId: 6, url: "images/beachhouse4.jpg" },
+  { reviewId: 6, url: "images/beachhouse5.jpg" },
 ];
 
 module.exports = {
@@ -23,7 +25,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName = "ReviewImage";
+    options.tableName = "ReviewImages";
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, reviewImageData, {});
   },

@@ -51,6 +51,20 @@ const reviewData = [
       "We were quite disappointed with our stay at the beach house. The house was not clean, and several amenities were broken or missing. The beach access was convenient, but the overall experience was far from what we expected.",
     stars: 1,
   },
+  {
+    spotId: 5,
+    userId: 1,
+    review:
+      "We had a mixed experience during our stay at the beach house. The location was fantastic, with easy access to the beach and beautiful ocean views. However, the house itself was just average. While it was clean and had most of the necessary amenities, a few items were either broken or missing, which was a bit inconvenient. The overall experience was decent, but it didn't quite live up to our expectations. With a few improvements, this could be a great place to stay.",
+    stars: 3,
+  },
+  {
+    spotId: 4,
+    userId: 1,
+    review:
+      "Despite the great location, the issues with the house significantly impacted our stay. It needs major improvements before we would consider staying here again.",
+    stars: 2,
+  },
 ];
 
 module.exports = {

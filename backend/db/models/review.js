@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Review.init(
     {
-      spotId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      userId: {
+      spotId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -37,14 +37,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       stars: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
-          min: 0,
+          min: 1,
           max: 5,
           outOfRange(value) {
-            if (value < 0 || value > 5) {
-              throw new Error("Star needs to be within 0 - 5.");
+            if (value < 1 || value > 5) {
+              throw new Error("Stars must be an integer from 1 to 5");
             }
           },
         },

@@ -16,22 +16,22 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
-        spotId: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-          references: { model: "Spots" },
-        },
         userId: {
           type: Sequelize.INTEGER,
           allowNull: false,
           references: { model: "Users" },
+        },
+        spotId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: { model: "Spots" },
         },
         review: {
           type: Sequelize.TEXT,
           allowNull: false,
         },
         stars: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.FLOAT,
           allowNull: false,
         },
         createdAt: {

@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { environment } = require("./config");
 const isProduction = environment === "production";
+const { ValidationError } = require("sequelize");
 
 const app = express();
 
@@ -50,7 +51,6 @@ app.use((_req, _res, next) => {
   next(err);
 });
 
-const { ValidationError } = require("sequelize");
 // Process sequelize errors
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:

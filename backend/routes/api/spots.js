@@ -16,10 +16,10 @@ const validateSpot = [
     .exists({ checkFalsy: true })
     .withMessage("Country is required"),
   check("lat")
-    .isDecimal({ min: -90, max: 90 })
+    .isFloat({ min: -90, max: 90 })
     .withMessage("Latitude must be within -90 and 90"),
   check("lng")
-    .isDecimal({ min: -180, max: 180 })
+    .isFloat({ min: -180, max: 180 })
     .withMessage("Longitude must be within -180 and 180"),
   check("name")
     .exists({ checkFalsy: true })
@@ -30,7 +30,7 @@ const validateSpot = [
     .withMessage("Description is required"),
   check("price")
     .exists({ checkFalsy: true })
-    .isDecimal({ min: 0 })
+    .isFloat({ min: 0 })
     .withMessage("Price per day must be a positive number"),
   handleValidationErrors,
 ];
@@ -50,20 +50,62 @@ const router = express.Router();
 // Get all Spots owned by the Current User
 router.get("/current", requireAuth, async (req, res) => {
   const { user } = req;
-  const spots = await user.getSpots();
-  // spots.map((spot) => {
-  //   spot.avgRating = 0;
-  //   spot.previewImage = "something";
-  //   return spot;
-  // });
 
-  return res.status(200).json({ Spots: spots });
+  const spots = await Spot.findAll({
+    where: { ownerId: user.id },
+    attributes: {
+      include: [
+        [Sequelize.fn("AVG", Sequelize.col("Reviews.stars")), "avgRating"],
+      ],
+    },
+    include: [
+      {
+        model: Review,
+        attributes: [],
+      },
+      {
+        model: SpotImage,
+        attributes: ["url"],
+        where: { preview: true },
+        required: false,
+      },
+    ],
+    group: ["Spot.id", "SpotImages.id"],
+  });
+
+  const spotsWithDetails = spots.map((spot) => {
+    const spotJson = spot.toJSON();
+    return {
+      id: spot.id,
+      ownerId: spot.ownerId,
+      address: spot.address,
+      city: spot.city,
+      state: spot.state,
+      country: spot.country,
+      lat: spot.lat,
+      lng: spot.lng,
+      name: spot.name,
+      description: spot.description,
+      price: spot.price,
+      createdAt: spot.createdAt,
+      updatedAt: spot.updatedAt,
+      avgRating: parseFloat(spotJson.avgRating) || null,
+      previewImage:
+        spotJson.SpotImages.length > 0 ? spotJson.SpotImages[0].url : null,
+    };
+  });
+
+  return res.status(200).json({ Spots: spotsWithDetails });
 });
 
 // Get details of a Spot from an id
 router.get("/:spotId", async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId, {
     include: [
+      {
+        model: Review,
+        attributes: ["stars"],
+      },
       { model: SpotImage },
       {
         model: User,
@@ -129,21 +171,12 @@ router.get("/", async (req, res) => {
 });
 
 // Create a Spot
-router.post("/", validateSpot, async (req, res) => {
-  const {
-    ownerId,
-    address,
-    city,
-    state,
-    country,
-    lat,
-    lng,
-    name,
-    description,
-    price,
-  } = req.body;
-  const newSpot = Spot.create({
-    ownerId,
+router.post("/", requireAuth, validateSpot, async (req, res) => {
+  const { user } = req;
+  const { address, city, state, country, lat, lng, name, description, price } =
+    req.body;
+  const newSpot = await user.createSpot({
+    ownerId: user.id,
     address,
     city,
     state,
@@ -154,8 +187,10 @@ router.post("/", validateSpot, async (req, res) => {
     description,
     price,
   });
+  return res.status(201).json(newSpot);
+
   // {
-  //   "address": "789 RV Park Way",
+  //   "address": "123 RV Park Way",
   //   "city": "Phoenix",
   //   "state": "Arizona",
   //   "country": "United States of America",
@@ -165,7 +200,27 @@ router.post("/", validateSpot, async (req, res) => {
   //   "description": "Spacious RV park with all amenities and a stunning desert view.",
   //   "price": 75
   // }
-  return res.status(201).json(newSpot);
+});
+
+// Add an Image to a Spot based on the Spot's id
+router.post("/:spotId/images", requireAuth, async (req, res) => {
+  const spot = await Spot.findByPk(req.params.spotId);
+  if (!spot) {
+    return res.status(404).json({
+      message: "Spot couldn't be found",
+    });
+  }
+  const newImage = await spot.createSpotImage(req.body);
+  const response = {
+    id: newImage.id,
+    url: newImage.url,
+    preview: newImage.preview,
+  };
+  return res.status(200).json(response);
+  // {
+  //   "url": "images/treehouse5_1.jpg",
+  //   "preview": true
+  // }
 });
 
 // Edit a Spot
@@ -188,7 +243,20 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res) => {
   if (description !== undefined) spot.description = description;
   if (price !== undefined) spot.price = price;
 
-  await spot.save();
+  await spot.save({
+    fields: [
+      "address",
+      "city",
+      "state",
+      "country",
+      "lat",
+      "lng",
+      "name",
+      "description",
+      "price",
+      "updatedAt",
+    ],
+  });
   return res.status(200).json(spot);
 });
 

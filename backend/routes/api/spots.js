@@ -8,6 +8,7 @@ const {
   SpotImage,
   Review,
   ReviewImage,
+  Booking,
   Sequelize,
 } = require("../../db/models");
 const { check } = require("express-validator");
@@ -122,6 +123,42 @@ router.get("/:spotId/reviews", async (req, res) => {
     ],
   });
   return res.status(200).json({ Reviews: reviews });
+});
+
+// Get all Bookings for a Spot based on the Spot's id
+router.get("/:spotId/bookings", requireAuth, async (req, res) => {
+  const spot = await Spot.findByPk(req.params.spotId);
+  if (!spot) {
+    return res.status(404).json({
+      message: "Spot couldn't be found",
+    });
+  }
+
+  const { user } = req;
+  const owner = await spot.getOwner();
+  if (user.id !== owner.id) {
+    const bookings = await Booking.findAll({
+      where: { spotId: spot.id },
+      attributes: ["spotId", "startDate", "endDate"],
+    });
+    return res.status(200).json({ Bookings: bookings });
+  } else {
+    const bookings = await Booking.findAll({
+      where: { spotId: spot.id },
+      include: [{ model: User, attributes: ["id", "firstName", "lastName"] }],
+    });
+    return res.status(200).json({ Bookings: bookings });
+  }
+});
+
+// Create a Booking from a Spot based on the Spot's id
+router.post("/:spotId/bookings", requireAuth, async (req, res) => {
+  const spot = await Spot.findByPk(req.params.spotId);
+  if (!spot) {
+    return res.status(404).json({
+      message: "Spot couldn't be found",
+    });
+  }
 });
 
 // Create a Review for a Spot based on the Spot's id

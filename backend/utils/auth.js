@@ -64,10 +64,24 @@ const requireAuth = function (req, _res, next) {
   if (req.user) return next();
 
   const err = new Error("Authentication required");
-  err.title = "Authentication required";
-  err.errors = { message: "Authentication required" };
+  // err.title = "Authentication required";
+  // err.errors = { message: "Authentication required" };
   err.status = 401;
   return next(err);
 };
 
-module.exports = { setTokenCookie, restoreUser, requireAuth };
+// All endpoints that require authentication and the current user does not have the correct role(s) or permission(s).
+// const requirePermission = function (req, _res, next) {
+//   const currentUser = req.user;
+
+//   const err = new Error("Forbidden");
+//   err.status = 403;
+//   return next(err);
+// };
+
+module.exports = {
+  setTokenCookie,
+  restoreUser,
+  requireAuth,
+  // requirePermission,
+};

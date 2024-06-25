@@ -351,6 +351,17 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
     description,
     price,
   });
+  // const response = {
+  //   address,
+  //   city,
+  //   state,
+  //   country,
+  //   lat,
+  //   lng,
+  //   name,
+  //   description,
+  //   price,
+  // };
   return res.status(201).json(newSpot);
 
   // {
@@ -374,6 +385,14 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
       message: "Spot couldn't be found",
     });
   }
+
+  const { user } = req;
+  if (spot.ownerId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
   const newImage = await spot.createSpotImage(req.body);
   const response = {
     id: newImage.id,
@@ -395,6 +414,14 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res) => {
       message: "Spot couldn't be found",
     });
   }
+
+  const { user } = req;
+  if (spot.ownerId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
   const { address, city, state, country, lat, lng, name, description, price } =
     req.body;
   if (address !== undefined) spot.address = address;
@@ -432,6 +459,14 @@ router.delete("/:spotId", requireAuth, async (req, res) => {
       message: "Spot couldn't be found",
     });
   }
+
+  const { user } = req;
+  if (spot.ownerId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
   await spot.destroy();
   return res.status(200).json({
     message: "Successfully deleted",

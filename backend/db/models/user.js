@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Review, {
         foreignKey: "userId",
         references: { model: "Spots" },
+        onDelete: "CASCADE",
+        hooks: true,
       });
       User.hasMany(models.Booking, {
         foreignKey: "userId",

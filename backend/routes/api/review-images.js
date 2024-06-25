@@ -1,21 +1,22 @@
 const express = require("express");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { SpotImage } = require("../../db/models");
+const { ReviewImage } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-
 const router = express.Router();
 
-// Delete a Spot Image
+module.exports = router;
+
+// Delete a Review Image
 router.delete("/:imageId", requireAuth, async (req, res) => {
-  const spotImage = await SpotImage.findByPk(req.params.imageId);
-  if (!spotImage) {
+  const reviewImage = await ReviewImage.findByPk(req.params.imageId);
+  if (!reviewImage) {
     return res.status(404).json({
-      message: "Spot Image couldn't be found",
+      message: "Review Image couldn't be found",
     });
   }
-  await spotImage.destroy();
+  await reviewImage.destroy();
   return res.status(200).json({
     message: "Successfully deleted",
   });

@@ -167,6 +167,12 @@ router.post(
     const { startDate, endDate } = req.body;
     const { user } = req;
 
+    if (spot.ownerId === user.id) {
+      return res.status(403).json({
+        message: "Forbidden",
+      });
+    }
+
     const conflictingBookings = await Booking.findAll({
       where: {
         spotId: spot.id,

@@ -20,12 +20,13 @@ router.get("/current", requireAuth, async (req, res) => {
   const bookings = await Booking.findAll({
     where: { userId: user.id },
     include: [
-      { model: User, attributes: ["id", "firstName", "lastName"] },
-      { model: Spot, attributes: { exclude: ["createdAt", "updatedAt"] } },
-      { model: ReviewImage, attributes: ["id", "url"] },
+      {
+        model: Spot,
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+      },
     ],
   });
-  return res.status(200).json({ Reviews: reviews });
+  return res.status(200).json({ Bookings: bookings });
 });
 
 module.exports = router;

@@ -20,11 +20,13 @@ module.exports = {
           type: Sequelize.INTEGER,
           allowNull: false,
           references: { model: "Users" },
+          onDelete: "CASCADE",
         },
         spotId: {
           type: Sequelize.INTEGER,
           allowNull: false,
           references: { model: "Spots" },
+          onDelete: "CASCADE",
         },
         review: {
           type: Sequelize.TEXT,

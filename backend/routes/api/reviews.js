@@ -40,6 +40,13 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
     });
   }
 
+  const { user } = req;
+  if (review.userId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
   const imageCount = await ReviewImage.count({
     where: { reviewId: req.params.reviewId },
   });
@@ -66,6 +73,13 @@ router.put("/:reviewId", requireAuth, validateReview, async (req, res) => {
     });
   }
 
+  const { user } = req;
+  if (reviewToUpdate.userId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
   const { review, stars } = req.body;
   if (review !== undefined) reviewToUpdate.review = review;
   if (stars !== undefined) reviewToUpdate.stars = stars;
@@ -82,6 +96,13 @@ router.delete("/:reviewId", requireAuth, async (req, res) => {
   if (!review) {
     return res.status(404).json({
       message: "Review couldn't be found",
+    });
+  }
+
+  const { user } = req;
+  if (review.userId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
     });
   }
 

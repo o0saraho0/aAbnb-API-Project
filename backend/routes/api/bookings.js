@@ -59,8 +59,14 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res) => {
     });
   }
 
-  const { startDate, endDate } = req.body;
   const { user } = req;
+  if (booking.userId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+
+  const { startDate, endDate } = req.body;
   const spot = await Spot.findByPk(booking.spotId);
 
   if (new Date(startDate) < new Date()) {
@@ -118,6 +124,13 @@ router.delete("/:bookingId", requireAuth, async (req, res) => {
   if (!booking) {
     return res.status(404).json({
       message: "Booking couldn't be found",
+    });
+  }
+
+  const { user } = req;
+  if (booking.userId !== user.id) {
+    return res.status(403).json({
+      message: "Forbidden",
     });
   }
 

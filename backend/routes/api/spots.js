@@ -74,6 +74,42 @@ const validateBooking = [
   handleValidationErrors,
 ];
 
+const validateQuery = [
+  check("page")
+    .isInt({ min: 1, max: 10 })
+    .optional()
+    .withMessage("Page must be greater than or equal to 1"),
+  check("size")
+    .isInt({ min: 1, max: 20 })
+    .optional()
+    .withMessage("Size must be greater than or equal to 1"),
+  check("maxLat")
+    .isFloat({ min: -90, max: 90 })
+    .optional()
+    .withMessage("Maximum latitude is invalid"),
+  check("minLat")
+    .isFloat({ min: -90, max: 90 })
+    .optional()
+    .withMessage("Minimum latitude is invalid"),
+  check("maxLng")
+    .isFloat({ min: -180, max: 180 })
+    .optional()
+    .withMessage("Maximum longitude is invalid"),
+  check("minLng")
+    .isFloat({ min: -180, max: 180 })
+    .optional()
+    .withMessage("Minimum longitude is invalid"),
+  check("maxPrice")
+    .isFloat({ min: 0 })
+    .optional()
+    .withMessage("Maximum price must be greater than or equal to 0"),
+  check("minPrice")
+    .isFloat({ min: 0 })
+    .optional()
+    .withMessage("Minimum price must be greater than or equal to 0"),
+  handleValidationErrors,
+];
+
 const router = express.Router();
 // Spot.dataValues.previewImage = "";
 
@@ -272,10 +308,6 @@ router.get("/current", requireAuth, async (req, res) => {
 router.get("/:spotId", async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId, {
     include: [
-      {
-        model: Review,
-        attributes: ["stars"],
-      },
       { model: SpotImage },
       {
         model: User,
@@ -284,17 +316,51 @@ router.get("/:spotId", async (req, res) => {
       },
     ],
   });
+
   if (!spot) {
     return res.status(404).json({
       message: "Spot couldn't be found",
     });
   }
+
+  const reviews = await Review.findAll({
+    where: { spotId: req.params.spotId },
+  });
+  // console.log(reviews);
+  // console.log("numReviews ->", reviews.length);
+  spot.dataValues.numReviews = reviews.length;
+
   return res.status(200).json(spot);
 });
 
 // Get all Spots
-router.get("/", async (req, res) => {
+router.get("/", validateQuery, async (req, res) => {
+  const {
+    page = 1,
+    size = 20,
+    minLat,
+    maxLat,
+    minLng,
+    maxLng,
+    minPrice,
+    maxPrice,
+  } = req.query;
+  const limit = parseInt(size);
+  const offset = limit * (page - 1);
+
+  const where = {};
+  if (minLat) where.lat = { [Op.gte]: parseFloat(minLat) };
+  if (maxLat) where.lat = { ...where.lat, [Op.lte]: parseFloat(maxLat) };
+  if (minLng) where.lng = { [Op.gte]: parseFloat(minLng) };
+  if (maxLng) where.lng = { ...where.lng, [Op.lte]: parseFloat(maxLng) };
+  if (minPrice) where.price = { [Op.gte]: parseFloat(minPrice) };
+  if (maxPrice)
+    where.price = { ...where.price, [Op.lte]: parseFloat(maxPrice) };
+
   const spots = await Spot.findAll({
+    where,
+    limit,
+    offset,
     attributes: {
       include: [
         [Sequelize.fn("AVG", Sequelize.col("Reviews.stars")), "avgRating"],
@@ -313,6 +379,7 @@ router.get("/", async (req, res) => {
       },
     ],
     group: ["Spot.id", "SpotImages.id"],
+    subQuery: false,
   });
 
   const spotsWithDetails = spots.map((spot) => {
@@ -337,7 +404,11 @@ router.get("/", async (req, res) => {
     };
   });
 
-  return res.status(200).json({ Spots: spotsWithDetails });
+  return res.status(200).json({
+    Spots: spotsWithDetails,
+    page: parseInt(page),
+    size: parseInt(size),
+  });
 });
 
 // Create a Spot

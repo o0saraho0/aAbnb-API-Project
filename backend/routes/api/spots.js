@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const { formatTime, formatDate } = require("../../utils/date");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const {
@@ -157,6 +158,8 @@ router.post(
 
     const reviewData = { userId: user.id, ...req.body };
     const newReview = await spot.createReview(reviewData);
+    newReview.dataValues.createdAt = formatTime(newReview.dataValues.createdAt);
+    newReview.dataValues.updatedAt = formatTime(newReview.dataValues.updatedAt);
     return res.status(201).json(newReview);
   }
 );
@@ -177,11 +180,19 @@ router.get("/:spotId/bookings", requireAuth, async (req, res) => {
       where: { spotId: spot.id },
       attributes: ["spotId", "startDate", "endDate"],
     });
+    bookings.forEach((booking) => {
+      booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
+      booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
+    });
     return res.status(200).json({ Bookings: bookings });
   } else {
     const bookings = await Booking.findAll({
       where: { spotId: spot.id },
       include: [{ model: User, attributes: ["id", "firstName", "lastName"] }],
+    });
+    bookings.forEach((booking) => {
+      booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
+      booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
     });
     return res.status(200).json({ Bookings: bookings });
   }
@@ -249,7 +260,16 @@ router.post(
       startDate,
       endDate,
     });
-    return res.status(200).json(newBooking);
+
+    const response = {
+      spotId: newBooking.spotId,
+      userId: newBooking.userId,
+      startDate: formatDate(newBooking.startDate),
+      endDate: formatDate(newBooking.endDate),
+      createdAt: formatTime(newBooking.createdAt),
+      updatedAt: formatTime(newBooking.updatedAt),
+    };
+    return res.status(200).json(response);
   }
 );
 
@@ -293,11 +313,13 @@ router.get("/current", requireAuth, async (req, res) => {
       name: spot.name,
       description: spot.description,
       price: spot.price,
-      createdAt: spot.createdAt,
-      updatedAt: spot.updatedAt,
-      avgRating: parseFloat(spotJson.avgRating) || null,
+      createdAt: formatTime(spot.createdAt),
+      updatedAt: formatTime(spot.updatedAt),
+      avgRating: parseFloat(spotJson.avgRating) || "No rating yet.",
       previewImage:
-        spotJson.SpotImages.length > 0 ? spotJson.SpotImages[0].url : null,
+        spotJson.SpotImages.length > 0
+          ? spotJson.SpotImages[0].url
+          : "No preview image yet.",
     };
   });
 
@@ -329,6 +351,8 @@ router.get("/:spotId", async (req, res) => {
   // console.log(reviews);
   // console.log("numReviews ->", reviews.length);
   spot.dataValues.numReviews = reviews.length;
+  spot.dataValues.createdAt = formatTime(spot.dataValues.createdAt);
+  spot.dataValues.updatedAt = formatTime(spot.dataValues.updatedAt);
 
   return res.status(200).json(spot);
 });
@@ -395,12 +419,14 @@ router.get("/", validateQuery, async (req, res) => {
       name: spot.name,
       description: spot.description,
       price: spot.price,
-      createdAt: spot.createdAt,
-      updatedAt: spot.updatedAt,
+      createdAt: formatTime(spot.createdAt),
+      updatedAt: formatTime(spot.updatedAt),
       avgRating: spot.dataValues.avgRating
         ? parseFloat(spot.dataValues.avgRating).toFixed(1)
-        : null,
-      previewImage: spot.SpotImages.length ? spot.SpotImages[0].url : null,
+        : "No rating yet.",
+      previewImage: spot.SpotImages.length
+        ? spot.SpotImages[0].url
+        : "No preview image yet.",
     };
   });
 
@@ -428,30 +454,10 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
     description,
     price,
   });
-  // const response = {
-  //   address,
-  //   city,
-  //   state,
-  //   country,
-  //   lat,
-  //   lng,
-  //   name,
-  //   description,
-  //   price,
-  // };
-  return res.status(201).json(newSpot);
+  newSpot.dataValues.createdAt = formatTime(newSpot.dataValues.createdAt);
+  newSpot.dataValues.updatedAt = formatTime(newSpot.dataValues.updatedAt);
 
-  // {
-  //   "address": "123 RV Park Way",
-  //   "city": "Phoenix",
-  //   "state": "Arizona",
-  //   "country": "United States of America",
-  //   "lat": 33.4484,
-  //   "lng": -112.0740,
-  //   "name": "Desert Oasis RV Park",
-  //   "description": "Spacious RV park with all amenities and a stunning desert view.",
-  //   "price": 75
-  // }
+  return res.status(201).json(newSpot);
 });
 
 // Add an Image to a Spot based on the Spot's id
@@ -525,6 +531,9 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res) => {
       "updatedAt",
     ],
   });
+  spot.dataValues.createdAt = formatTime(spot.dataValues.createdAt);
+  spot.dataValues.updatedAt = formatTime(spot.dataValues.updatedAt);
+
   return res.status(200).json(spot);
 });
 

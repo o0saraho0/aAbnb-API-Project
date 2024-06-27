@@ -12,6 +12,7 @@ const {
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { Op } = require("sequelize");
+const { formatTime, formatDate } = require("../../utils/date");
 
 const validateBooking = [
   check("startDate").custom((value, { req }) => {
@@ -43,11 +44,48 @@ router.get("/current", requireAuth, async (req, res) => {
     include: [
       {
         model: Spot,
-        attributes: { exclude: ["createdAt", "updatedAt"] },
+        attributes: { exclude: ["createdAt", "updatedAt", "description"] },
+        include: [
+          {
+            model: SpotImage,
+            attributes: ["url"],
+            where: { preview: true },
+            required: false,
+          },
+        ],
       },
     ],
   });
-  return res.status(200).json({ Bookings: bookings });
+
+  const bookingsWithDetails = bookings.map((booking) => {
+    const bookingJson = booking.toJSON();
+    const previewImage =
+      bookingJson.Spot.SpotImages.length > 0
+        ? bookingJson.Spot.SpotImages[0].url
+        : "No preview image yet.";
+
+    return {
+      ...bookingJson,
+      startDate: formatDate(bookingJson.startDate),
+      endDate: formatDate(bookingJson.endDate),
+      createdAt: formatTime(bookingJson.createdAt),
+      updatedAt: formatTime(bookingJson.updatedAt),
+      Spot: {
+        id: bookingJson.Spot.id,
+        ownerId: bookingJson.Spot.ownerId,
+        address: bookingJson.Spot.address,
+        city: bookingJson.Spot.city,
+        state: bookingJson.Spot.state,
+        country: bookingJson.Spot.country,
+        lat: bookingJson.Spot.lat,
+        lng: bookingJson.Spot.lng,
+        name: bookingJson.Spot.name,
+        price: bookingJson.Spot.price,
+        previewImage: previewImage,
+      },
+    };
+  });
+  return res.status(200).json({ Bookings: bookingsWithDetails });
 });
 
 // Edit a Booking
@@ -109,6 +147,11 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res) => {
     endDate: endDate,
     updateAt: new Date(),
   });
+
+  booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
+  booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
+  booking.dataValues.createdAt = formatTime(booking.dataValues.createdAt);
+  booking.dataValues.updatedAt = formatTime(booking.dataValues.updatedAt);
 
   return res.status(200).json(booking);
 });

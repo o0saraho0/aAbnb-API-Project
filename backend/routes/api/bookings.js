@@ -145,7 +145,7 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res) => {
   await booking.update({
     startDate: startDate,
     endDate: endDate,
-    updateAt: new Date(),
+    updatedAt: new Date(),
   });
 
   booking.dataValues.startDate = formatDate(booking.dataValues.startDate);

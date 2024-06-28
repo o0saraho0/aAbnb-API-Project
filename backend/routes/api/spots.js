@@ -261,15 +261,18 @@ router.post(
       endDate,
     });
 
-    const response = {
-      spotId: newBooking.spotId,
-      userId: newBooking.userId,
-      startDate: formatDate(newBooking.startDate),
-      endDate: formatDate(newBooking.endDate),
-      createdAt: formatTime(newBooking.createdAt),
-      updatedAt: formatTime(newBooking.updatedAt),
-    };
-    return res.status(200).json(response);
+    newBooking.dataValues.startDate = formatDate(
+      newBooking.dataValues.startDate
+    );
+    newBooking.dataValues.endDate = formatDate(newBooking.dataValues.endDate);
+    newBooking.dataValues.createdAt = formatDate(
+      newBooking.dataValues.createdAt
+    );
+    newBooking.dataValues.updatedAt = formatDate(
+      newBooking.dataValues.updatedAt
+    );
+
+    return res.status(200).json(newBooking);
   }
 );
 

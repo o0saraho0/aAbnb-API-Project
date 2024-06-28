@@ -53,10 +53,10 @@ router.get("/current", requireAuth, async (req, res) => {
       reviewJson.Spot.SpotImages.length > 0
         ? reviewJson.Spot.SpotImages[0].url
         : "No preview image yet.";
-    const reviewImage =
-      reviewJson.ReviewImages.length > 0
-        ? reviewJson.ReviewImages[0].url
-        : "No review image yet.";
+    const reviewImages =
+        reviewJson.ReviewImages.length > 0
+          ? reviewJson.ReviewImages.map(image => ({ id: image.id, url: image.url }))
+          : "No review image yet.";
 
     return {
       id: reviewJson.id,
@@ -80,7 +80,7 @@ router.get("/current", requireAuth, async (req, res) => {
         price: reviewJson.Spot.price,
         previewImage: previewImage,
       },
-      ReviewImages: reviewImage,
+      ReviewImages: reviewImages,
     };
   });
   return res.status(200).json({ Reviews: reviewsWithDetails });

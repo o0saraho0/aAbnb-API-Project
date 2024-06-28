@@ -130,6 +130,10 @@ router.get("/:spotId/reviews", async (req, res) => {
       { model: ReviewImage, attributes: ["id", "url"] },
     ],
   });
+  reviews.forEach((review) => {
+    review.dataValues.createdAt = formatTime(review.dataValues.createdAt);
+    review.dataValues.updatedAt = formatTime(review.dataValues.updatedAt);
+  });
   return res.status(200).json({ Reviews: reviews });
 });
 
@@ -183,6 +187,8 @@ router.get("/:spotId/bookings", requireAuth, async (req, res) => {
     bookings.forEach((booking) => {
       booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
       booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
+      // booking.dataValues.createdAt = formatTime(booking.dataValues.createdAt);
+      // booking.dataValues.updatedAt = formatTime(booking.dataValues.updatedAt);
     });
     return res.status(200).json({ Bookings: bookings });
   } else {
@@ -193,6 +199,8 @@ router.get("/:spotId/bookings", requireAuth, async (req, res) => {
     bookings.forEach((booking) => {
       booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
       booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
+      booking.dataValues.createdAt = formatTime(booking.dataValues.createdAt);
+      booking.dataValues.updatedAt = formatTime(booking.dataValues.updatedAt);
     });
     return res.status(200).json({ Bookings: bookings });
   }
@@ -265,10 +273,10 @@ router.post(
       newBooking.dataValues.startDate
     );
     newBooking.dataValues.endDate = formatDate(newBooking.dataValues.endDate);
-    newBooking.dataValues.createdAt = formatDate(
+    newBooking.dataValues.createdAt = formatTime(
       newBooking.dataValues.createdAt
     );
-    newBooking.dataValues.updatedAt = formatDate(
+    newBooking.dataValues.updatedAt = formatTime(
       newBooking.dataValues.updatedAt
     );
 
@@ -318,7 +326,7 @@ router.get("/current", requireAuth, async (req, res) => {
       price: spot.price,
       createdAt: formatTime(spot.createdAt),
       updatedAt: formatTime(spot.updatedAt),
-      avgRating: parseFloat(spotJson.avgRating) || "No rating yet.",
+      avgRating: +parseFloat(spotJson.avgRating) || "No rating yet.",
       previewImage:
         spotJson.SpotImages.length > 0
           ? spotJson.SpotImages[0].url

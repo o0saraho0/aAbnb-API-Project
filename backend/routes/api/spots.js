@@ -433,7 +433,7 @@ router.get("/", validateQuery, async (req, res) => {
       createdAt: formatTime(spot.createdAt),
       updatedAt: formatTime(spot.updatedAt),
       avgRating: spot.dataValues.avgRating
-        ? parseFloat(spot.dataValues.avgRating).toFixed(1)
+        ? Math.round(spot.dataValues.avgRating * 10) / 10
         : "No rating yet.",
       previewImage: spot.SpotImages.length
         ? spot.SpotImages[0].url

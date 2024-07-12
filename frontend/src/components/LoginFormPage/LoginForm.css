@@ -5,7 +5,7 @@
   margin: 0;
 }
 
-html,
+/* html,
 body {
   height: 100vh;
   width: 100vw;
@@ -21,4 +21,4 @@ form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+} */

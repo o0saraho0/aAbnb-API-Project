@@ -1,0 +1,9 @@
+.profile-dropdown {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}

@@ -65,6 +65,90 @@ const reviewData = [
       "Despite the great location, the issues with the house significantly impacted our stay. It needs major improvements before we would consider staying here again.",
     stars: 2,
   },
+  {
+    spotId: 2,
+    userId: 1,
+    review:
+      "The mountain tree house was a delightful retreat. The views were breathtaking, and the house was cozy and well-appointed. It was the perfect place for a peaceful getaway.",
+    stars: 5,
+  },
+  {
+    spotId: 2,
+    userId: 6,
+    review:
+      "We loved our stay at the mountain tree house. The surroundings were serene, and the house had everything we needed for a comfortable stay. Highly recommend for nature lovers!",
+    stars: 4,
+  },
+  {
+    spotId: 3,
+    userId: 10,
+    review:
+      "Nature's Nest was a dream come true. The tree house was beautifully designed, and the location was perfect for a relaxing escape. Can't wait to return!",
+    stars: 5,
+  },
+  {
+    spotId: 3,
+    userId: 9,
+    review:
+      "Our stay at Nature's Nest was wonderful. The tree house was comfortable and well-equipped, and the surrounding nature was breathtaking. A perfect getaway spot.",
+    stars: 4,
+  },
+  {
+    spotId: 6,
+    userId: 1,
+    review:
+      "Maple Tree Haven was a peaceful retreat. The tree house was charming, and the maple trees around it added to the serene atmosphere. Highly recommend for a relaxing vacation.",
+    stars: 4,
+  },
+  {
+    spotId: 6,
+    userId: 2,
+    review:
+      "We enjoyed our stay at Maple Tree Haven. The tree house was cozy and well-maintained, and the location was perfect for a quiet getaway. Will definitely return.",
+    stars: 4,
+  },
+  {
+    spotId: 7,
+    userId: 4,
+    review:
+      "Cedar Tree Escape was a unique experience. The tree house was comfortable and had stunning mountain views. It was a perfect spot for a peaceful retreat.",
+    stars: 4,
+  },
+  {
+    spotId: 7,
+    userId: 5,
+    review:
+      "We had a wonderful time at Cedar Tree Escape. The tree house was cozy and well-equipped, and the surroundings were beautiful. Highly recommend for a relaxing vacation.",
+    stars: 5,
+  },
+  {
+    spotId: 8,
+    userId: 10,
+    review:
+      "Pine Tree Lodge was a fantastic getaway. The tree house was charming, and the lake views were breathtaking. It was the perfect spot for a relaxing vacation.",
+    stars: 5,
+  },
+  {
+    spotId: 8,
+    userId: 9,
+    review:
+      "Our stay at Pine Tree Lodge was amazing. The tree house was comfortable and had stunning views of the Adirondacks. Highly recommend for a peaceful retreat.",
+    stars: 5,
+  },
+  {
+    spotId: 9,
+    userId: 3,
+    review:
+      "Ocean Breeze was a luxurious escape. The beach house was beautifully decorated, and the ocean views were stunning. It was the perfect spot for a relaxing vacation.",
+    stars: 5,
+  },
+  {
+    spotId: 9,
+    userId: 4,
+    review:
+      "We had a wonderful time at Ocean Breeze. The beach house was spacious and well-equipped, and the location was perfect for a beachside getaway. Highly recommend!",
+    stars: 4,
+  },
 ];
 
 module.exports = {

@@ -17,7 +17,7 @@
 .nav_ul {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   list-style: none;
   margin: 15px;
 }
@@ -25,4 +25,5 @@
 #logo {
   font-size: 25px;
   font-weight: bold;
+  text-decoration: none;
 }

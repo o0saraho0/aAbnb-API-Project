@@ -1,9 +1,29 @@
 .spotlist_small_container {
-  width: 260px;
+  width: 200px;
   margin: 15px;
 }
 
 .spotlist_small_container_link {
   text-decoration: none;
   color: black;
+}
+
+.spotlist_small_container img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.spotlist_small_container h4 {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+  bottom: 190px;
+  text-align: center;
+  font-weight: 550;
+}
+
+.spotlist_preview_price {
+  font-weight: 550;
 }

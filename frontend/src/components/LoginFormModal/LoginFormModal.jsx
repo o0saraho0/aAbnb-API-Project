@@ -19,8 +19,9 @@ function LoginFormModal() {
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
-          console.log("errors in login", data.errors);
           setErrors(data.errors);
+        } else if (data.message) {
+          setErrors({message: "The provided credentials were invalid"});
         }
       });
   };
@@ -51,7 +52,11 @@ function LoginFormModal() {
         {errors.password && (
           <p className='error_message'>{errors.password}</p>
         )}
+        {errors.message && (
+          <p className='error_message'>{errors.message}</p>
+        )}
         <button type="submit">Log In</button>
+        
       </form>
     </div>
   );

@@ -10,8 +10,6 @@ const SpotList = () => {
     const spots = useSelector((state) => state.spots);
     const spotsArray = Object.values(spots);
 
-    // console.log("spots in component", spotsArray);
-
     useEffect(() => {
         dispatch(loadAllSpots());
     }, [dispatch]);
@@ -22,12 +20,12 @@ const SpotList = () => {
         <div key={spot.id} className="spotlist_small_container">
             <Link key={spot.id} to={`/api/spots/${spot.id}`} className="spotlist_small_container_link">
             <img src={spot.previewImage} alt={spot.name} />
-            <div className="spotlist_preview">
                 <h4>{spot.name}</h4>
-                <p>⭐️ {spot.avgRating}</p>
+                <div className='spotlist_preview'>
                 <p>{spot.city}, {spot.state}</p>
-                <p>${spot.price}</p>
-            </div>
+                <p>⭐️ {spot.avgRating}</p>
+                </div>
+                <span className='spotlist_preview_price'>${spot.price}</span><span> night</span>
             </Link>
         </div>
         

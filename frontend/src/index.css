@@ -5,6 +5,11 @@
   margin: 0;
 }
 
+.error_message {
+  color: red;
+  font-size: 15px;
+}
+
 input {
   height: 30px;
   width: 200px;
@@ -49,4 +54,10 @@ form label {
 #modal-content button:hover {
   cursor: pointer;
   background-color: #fb7a7e;
+}
+
+.spotlist_container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px;
 }

@@ -38,6 +38,18 @@ export const loadAllSpots = () => async (dispatch) => {
   }
 };
 
+export const loadOneSpot = (spotId) => async (dispatch) => {
+  const response = await fetch(`api/spots/${spotId}`);
+  if (response.ok) {
+    const spot = await response.json();
+    dispatch(loadSpot(spot.Spots));
+    return spot;
+  } else {
+    const error = await response.json();
+    return error;
+  }
+};
+
 export const createSpot = (spot) => async (dispatch) => {
   const response = await fetch("api/spots", {
     method: "POST",

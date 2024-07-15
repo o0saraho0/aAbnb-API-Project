@@ -1,0 +1,9 @@
+.spotlist_small_container {
+  width: 260px;
+  margin: 15px;
+}
+
+.spotlist_small_container_link {
+  text-decoration: none;
+  color: black;
+}

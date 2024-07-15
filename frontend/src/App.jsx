@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <SpotList />
+        element: <div className='spotlist_container'><SpotList /></div>
       }
     ]
   }

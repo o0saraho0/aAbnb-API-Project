@@ -18,7 +18,7 @@ const SpotList = () => {
 
     return spotsArray.map((spot) => (
         <div key={spot.id} className="spotlist_small_container">
-            <Link key={spot.id} to={`/api/spots/${spot.id}`} className="spotlist_small_container_link">
+            <Link key={spot.id} to={`/${spot.id}`} className="spotlist_small_container_link">
             <img src={spot.previewImage} alt={spot.name} />
                 <h4>{spot.name}</h4>
                 <div className='spotlist_preview'>

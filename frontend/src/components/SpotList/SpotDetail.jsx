@@ -1,17 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { loadOneSpot } from "../../store/spot";
 import './SpotList.css'
 
-const SpotDetail = (spotId) => {
+const SpotDetail = () => {
+    const {spotId} = useParams();
     const dispatch = useDispatch();
-    // const spotId = useParams();
-    console.log(spotId);
     
-    const spot = useSelector((state) => state.spots);
-
-    console.log("spots in component", spot);
+    const spot = useSelector((state) => state.spots[spotId]);
+    console.log("spot in commponent", spot);
 
     useEffect(() => {
         dispatch(loadOneSpot(spotId));
@@ -20,13 +18,17 @@ const SpotDetail = (spotId) => {
     if (!spot) return null;
 
     return (
-        <div className="spot_detail_container">
+        <div className="spotdetail_container">
             <h2>{spot.name}</h2>
             <p>{spot.city}, {spot.state}, {spot.country}</p>
-            <div className="image_container">
-               {spot.SpotImages}
+            <div className="spotdetail_image_container">
+                <div className="large_image image"><img src={spot.previewImage} alt={spot.name} /></div>
+                <div className="small_image image"><img src="" alt={spot.name} /></div>
+                <div className="small_image image"><img src="" alt={spot.name} /></div>
+                <div className="small_image image"><img src="" alt={spot.name} /></div>
+                <div className="small_image image"><img src="" alt={spot.name} /></div>
             </div>
-            <h2>Hosted by {spot.ownerId}</h2>
+            <p>Hosted by {}</p>
 
         </div>
     )

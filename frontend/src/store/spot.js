@@ -30,7 +30,6 @@ export const loadAllSpots = () => async (dispatch) => {
   if (response.ok) {
     const spots = await response.json();
     dispatch(loadSpot(spots.Spots));
-    // console.log("spots in store", spots);
     return spots;
   } else {
     const error = await response.json();
@@ -42,7 +41,7 @@ export const loadOneSpot = (spotId) => async (dispatch) => {
   const response = await fetch(`api/spots/${spotId}`);
   if (response.ok) {
     const spot = await response.json();
-    dispatch(loadSpot(spot.Spots));
+    dispatch(loadAllSpots(spot));
     return spot;
   } else {
     const error = await response.json();

@@ -17,7 +17,7 @@ const SpotImage = ({spotId}) => {
     return (
         <div className="spotdetail_image_container">
             <div className="large_image image">
-                <img src={spot.SpotImages[0].url} alt={spot.name} />
+                <img src={spot.SpotImages[0]?.url} alt={spot.name} />
             </div>
             {spot.SpotImages.slice(1, 5).map((image) => (
                 <div className="small_image image" key={image.id}>

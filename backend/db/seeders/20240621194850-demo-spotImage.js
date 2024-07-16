@@ -340,9 +340,49 @@ const spotImageData = [
     preview: true,
   },
   {
+    spotId: 14,
+    url: "/images/beach6_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 14,
+    url: "/images/beach6_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 14,
+    url: "/images/beach6_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 14,
+    url: "/images/beach6_5.webp",
+    preview: false,
+  },
+  {
     spotId: 15,
     url: "/images/beach7_1.webp",
     preview: true,
+  },
+  {
+    spotId: 15,
+    url: "/images/beach7_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 15,
+    url: "/images/beach7_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 15,
+    url: "/images/beach7_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 15,
+    url: "/images/beach7_5.webp",
+    preview: false,
   },
   {
     spotId: 16,
@@ -350,9 +390,49 @@ const spotImageData = [
     preview: true,
   },
   {
+    spotId: 16,
+    url: "/images/beach8_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 16,
+    url: "/images/beach8_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 16,
+    url: "/images/beach8_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 16,
+    url: "/images/beach8_5.webp",
+    preview: false,
+  },
+  {
     spotId: 17,
     url: "/images/camp1_1.webp",
     preview: true,
+  },
+  {
+    spotId: 17,
+    url: "/images/camp1_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 17,
+    url: "/images/camp1_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 17,
+    url: "/images/camp1_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 17,
+    url: "/images/camp1_5.webp",
+    preview: false,
   },
   {
     spotId: 18,
@@ -360,14 +440,74 @@ const spotImageData = [
     preview: true,
   },
   {
+    spotId: 18,
+    url: "/images/camp2_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 18,
+    url: "/images/camp2_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 18,
+    url: "/images/camp2_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 18,
+    url: "/images/camp2_5.webp",
+    preview: false,
+  },
+  {
     spotId: 19,
     url: "/images/camp3_1.webp",
     preview: true,
   },
   {
+    spotId: 19,
+    url: "/images/camp3_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 19,
+    url: "/images/camp3_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 19,
+    url: "/images/camp3_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 19,
+    url: "/images/camp3_5.webp",
+    preview: false,
+  },
+  {
     spotId: 20,
     url: "/images/camp4_1.webp",
     preview: true,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp4_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp4_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp4_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp4_5.webp",
+    preview: false,
   },
   {
     spotId: 21,

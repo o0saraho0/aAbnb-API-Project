@@ -8,9 +8,6 @@ const SpotImage = ({spotId}) => {
     
     const spot = useSelector((state) => state.spots[spotId]);
 
-    console.log(spot);
-    console.log(spot.SpotImages);
-
     useEffect(() => {
         dispatch(loadOneSpot(spotId));
     }, [dispatch, spotId]);

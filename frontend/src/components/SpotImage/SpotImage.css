@@ -9,6 +9,7 @@
 img {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .spotdetail_image_container img {

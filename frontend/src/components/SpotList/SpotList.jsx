@@ -18,12 +18,12 @@ const SpotList = () => {
 
     return spotsArray.map((spot) => (
         <div key={spot.id} className="spotlist_small_container">
-            <Link key={spot.id} to={`/${spot.id}`} className="spotlist_small_container_link">
+            <Link key={spot.id} to={`/spots/${spot.id}`} className="spotlist_small_container_link">
             <img src={spot.previewImage} alt={spot.name} />
                 <h4>{spot.name}</h4>
                 <div className='spotlist_preview'>
-                <p>{spot.city}, {spot.state}</p>
-                <p>⭐️ {spot.avgRating}</p>
+                <span>{spot.city}, {spot.state}</span>
+                <span>⭐️ {spot.avgRating && spot.avgRating !== "No rating yet." ? spot.avgRating : "New"}</span>
                 </div>
                 <span className='spotlist_preview_price'>${spot.price}</span><span> night</span>
             </Link>

@@ -24,6 +24,11 @@
   font-weight: 550;
 }
 
+.spotlist_preview {
+  display: flex;
+  justify-content: space-between;
+}
+
 .spotlist_preview_price {
   font-weight: 550;
 }

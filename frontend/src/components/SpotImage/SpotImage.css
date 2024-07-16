@@ -3,7 +3,6 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
-  height: 70vh;
 }
 
 img {

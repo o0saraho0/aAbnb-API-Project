@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
@@ -11,6 +11,13 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  useEffect(() => {
+    const errs = {};
+    if (credential.length < 4) errs.credential = " ";
+    if (password.length < 6) errs.password = " ";
+    setErrors(errs);
+  }, [credential, password]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
@@ -18,6 +25,7 @@ function LoginFormModal() {
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
+
         if (data && data.errors) {
           setErrors(data.errors);
         } else if (data.message) {
@@ -25,6 +33,11 @@ function LoginFormModal() {
         }
       });
   };
+
+  const handleDemoLogin = () => {
+    return dispatch(sessionActions.login({ credential: 'JohnD', password: 'password1' }))
+      .then(closeModal)
+  }
 
   return (
     <div className='log_in_container'>
@@ -55,8 +68,12 @@ function LoginFormModal() {
         {errors.message && (
           <p className='error_message'>{errors.message}</p>
         )}
-        <button type="submit">Log In</button>
-        
+        <button 
+        type="submit"
+        disabled={Object.values(errors).length}
+        >Log In
+        </button>
+        <button onClick={handleDemoLogin}>Log in as Demo User</button>
       </form>
     </div>
   );

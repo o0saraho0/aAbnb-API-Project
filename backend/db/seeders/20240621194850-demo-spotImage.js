@@ -61,7 +61,7 @@ const spotImageData = [
   },
   {
     spotId: 3,
-    url: "/images/treehouse1_1.webp",
+    url: "/images/treehouse3_1.webp",
     preview: true,
   },
   {

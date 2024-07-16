@@ -57,6 +57,18 @@ export const loadOneSpot = (spotId) => async (dispatch) => {
   }
 };
 
+export const loadCurrentSpots = () => async (dispatch) => {
+  const response = await csrfFetch("/api/spots/current");
+  if (response.ok) {
+    const spots = await response.json();
+    dispatch(loadSpot(spots.Spots));
+    return spots.Spots;
+  } else {
+    const error = await response.json();
+    return error;
+  }
+};
+
 export const createSpot = (spot) => async (dispatch) => {
   const response = await csrfFetch("/api/spots", {
     method: "POST",

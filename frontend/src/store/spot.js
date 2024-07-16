@@ -46,7 +46,7 @@ export const loadAllSpots = () => async (dispatch) => {
 };
 
 export const loadOneSpot = (spotId) => async (dispatch) => {
-  const response = await fetch(`/api/spots/${spotId}`);
+  const response = await csrfFetch(`/api/spots/${spotId}`);
   if (response.ok) {
     const spot = await response.json();
     dispatch(loadSingleSpot(spot));
@@ -58,7 +58,7 @@ export const loadOneSpot = (spotId) => async (dispatch) => {
 };
 
 export const createSpot = (spot) => async (dispatch) => {
-  const response = await fetch("/api/spots", {
+  const response = await csrfFetch("/api/spots", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(spot),
@@ -69,7 +69,8 @@ export const createSpot = (spot) => async (dispatch) => {
     return newSpot;
   } else {
     const error = await response.json();
-    return error;
+    console.log("error in store", error);
+    return error.errors;
   }
 };
 
@@ -85,7 +86,7 @@ export const editSpot = (spot) => async (dispatch) => {
     return updatedSpot;
   } else {
     const error = await response.json();
-    return error;
+    return { errors: error.errors };
   }
 };
 

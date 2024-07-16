@@ -1,0 +1,40 @@
+.spot_form form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 30px auto;
+  width: 450px;
+}
+
+.spot_form label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.spot_form input {
+  width: 450px;
+}
+
+.spot_form textarea {
+  width: 450px;
+}
+
+.spot_form h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.spot_form button {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #ff5a60;
+  margin: 50px auto;
+}

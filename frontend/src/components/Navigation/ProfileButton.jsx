@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import { Link } from 'react-router-dom';
+import './ProfileButton.css';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -46,10 +48,12 @@ function ProfileButton({ user }) {
 
   return (
     <div className='profile-wrapper'>
-      {user && <div><Link>Creat a Spot</Link></div>}
+      <div className='profile_container'>
+      {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
       <button onClick={toggleMenu}>
         <FaUserCircle />
       </button>
+      </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

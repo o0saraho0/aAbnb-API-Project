@@ -19,6 +19,10 @@ const SpotDetail = () => {
 
     if (!spot || !spot.Owner ) return null;
 
+    const handleReservation = () => {
+        alert("Feature coming soon");
+    }
+
     return (
         <div className="spotdetail_container">
             <h2>{spot.name}</h2>
@@ -34,9 +38,9 @@ const SpotDetail = () => {
                 <span id="spot_price">${spot.price}</span><span> night</span>
                 </div>
                 <div>
-                <span>⭐️avgRating</span> <span>{spot.numReviews} reviews</span>
+                <span>⭐️avgRating</span> <span>{spot.numReviews} {spot.numReviews === 1? "Review" : "Reviews"}</span>
                 </div>
-                <button>Reservation</button>
+                <button onClick={handleReservation}>Reservation</button>
             </div>
             </div>
             <ReviewList spotId={spotId}/>

@@ -16,7 +16,7 @@ const ReviewList = ({spotId}) => {
 
     return (
         <div className="reviewlist_container">
-        <h3>⭐️ {reviews.Reviews.length} reviews</h3>
+        <h3>⭐️ {} · {reviews.Reviews.length} {reviews.Reviews.length === 1? "Review" : "Reviews"}</h3>
         {reviews.Reviews.map((review) => (
             <div key={review.id} className="reviewList_small_container">
                 <h3>{review.User.firstName}</h3>

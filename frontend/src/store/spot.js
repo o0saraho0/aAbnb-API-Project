@@ -81,12 +81,12 @@ export const createSpot = (spot) => async (dispatch) => {
     return newSpot;
   } else {
     const error = await response.json();
-    console.log("error in store", error);
     return error.errors;
   }
 };
 
 export const editSpot = (spot) => async (dispatch) => {
+  console.log("spot in store", spot);
   const response = await csrfFetch(`/api/spots/${spot.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -95,6 +95,7 @@ export const editSpot = (spot) => async (dispatch) => {
   if (response.ok) {
     const updatedSpot = await response.json();
     dispatch(addSpot(updatedSpot));
+    console.log("updated? -->", updatedSpot);
     return updatedSpot;
   } else {
     const error = await response.json();

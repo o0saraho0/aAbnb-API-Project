@@ -1,73 +1,87 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createSpot } from '../../store/spot';
-import './SpotForm.css'
+import { editSpot, createSpot } from '../../store/spot';
+import './SpotForm.css';
 
 const SpotForm = ({ spot, formType }) => {
   const navigate = useNavigate();
-  const [country, setCountry] = useState(spot?.country);
-  const [address, setAddress] = useState(spot?.address);
-  const [city, setCity] = useState(spot?.city);
-  const [state, setState] = useState(spot?.state);
-  const [lat, setLat] = useState(spot?.lat);
-  const [lng, setLng] = useState(spot?.lng);
-  const [description, setDescription] = useState(spot?.description);
-  const [name, setName] = useState(spot?.name);
-  const [price, setPrice] = useState(spot?.price);
-  const [image1, setImage1] = useState(spot?.image1);
-  const [image2, setImage2] = useState(spot?.image2);
-  const [image3, setImage3] = useState(spot?.image3);
-  const [image4, setImage4] = useState(spot?.image4);
-  const [image5, setImage5] = useState(spot?.image5);
-  // const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const [country, setCountry] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [lat, setLat] = useState('');
+  const [lng, setLng] = useState('');
+  const [description, setDescription] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [image1, setImage1] = useState('');
+  const [image2, setImage2] = useState('');
+  const [image3, setImage3] = useState('');
+  const [image4, setImage4] = useState('');
+  const [image5, setImage5] = useState('');
+  const [errors, setErrors] = useState({});
 
-//   useEffect(() => {
-//     const newErrors = {};
-//     if (!country) newErrors.country = 'Country is required';
-//     if (!address) newErrors.address = 'Street Address is required';
-//     if (!city) newErrors.city = 'City is required';
-//     if (!state) newErrors.state = 'State is required';
-//     if (!description || description.length < 30)
-//         newErrors.description = 'Description needs 30 or more characters';
-//     if (!name) newErrors.title = 'Title is required';
-//     if (!price) newErrors.price = 'Price per night is required';
-//     if (!image1) newErrors.image1 = 'Preview Image URL is required';
-
-//     setErrors(newErrors);
-//     const isValid = Object.keys(newErrors).length === 0;
-//     setFormIsValid(isValid);
-//     }, [country, address, city, state, lat, lng, description, name, price, image1]);
+  useEffect(() => {
+    if (spot) {
+      setCountry(spot.country || '');
+      setAddress(spot.address || '');
+      setCity(spot.city || '');
+      setState(spot.state || '');
+      setLat(spot.lat || '');
+      setLng(spot.lng || '');
+      setDescription(spot.description || '');
+      setName(spot.name || '');
+      setPrice(spot.price || '');
+      setImage1(spot.image1 || '');
+      setImage2(spot.image2 || '');
+      setImage3(spot.image3 || '');
+      setImage4(spot.image4 || '');
+      setImage5(spot.image5 || '');
+    }
+  }, [spot]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setErrors({})
-    spot = { ...spot, country, address, city, state, lat, lng, description, name, price};
+    setErrors({});
+    const spotData = {
+      ...spot,
+      country,
+      address,
+      city,
+      state,
+      lat,
+      lng,
+      description,
+      name,
+      price,
+      image1,
+      image2,
+      image3,
+      image4,
+      image5,
+    };
 
-//   if (formType === 'Update your Spot') {
-//     const editedSpot = await dispatch(updateSpot(spot));
-//     spot = editedSpot;
-//   } else 
-
-    if (formType === 'Create a New Spot') {
-        const newSpot = await dispatch(createSpot(spot));
-        console.log("newSpot in component", newSpot);
-        spot = newSpot;
-
-        // if (spot.errors) {
-        //     setErrors(spot.errors);
-        //     console.log("errors", spot.errors);
-        // } else {
-            navigate(`/spots/${spot.id}`);
-        // }
+    let newSpot;
+    if (formType === 'Update your Spot') {
+      newSpot = await dispatch(editSpot(spotData));
+    } else if (formType === 'Create a New Spot') {
+      newSpot = await dispatch(createSpot(spotData));
     }
-};
+
+    if (newSpot.errors) {
+      setErrors(newSpot.errors);
+    } else {
+      navigate(`/spots/${newSpot.id}`);
+    }
+  };
 
   return (
     <div className='spot_form'>
     <form  onSubmit={handleSubmit}>
       <h1>{formType}</h1>
+      <div className="errors">{errors.address}</div>
       <div className='spot_location'>
       <h2>Where&apos;s your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>

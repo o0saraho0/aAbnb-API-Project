@@ -7,3 +7,31 @@
 .reviewlist_container {
   margin-bottom: 70px;
 }
+
+.post-review-button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  background-color: #ff5a60;
+}
+
+.delete-review-button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  background-color: #ff5a60;
+}
+
+.post-review-button:hover {
+  cursor: pointer;
+  background-color: #fb7a7e;
+}
+
+.delete-review-button:hover {
+  cursor: pointer;
+  background-color: #fb7a7e;
+}

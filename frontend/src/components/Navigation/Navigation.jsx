@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
     <nav>
     <ul className='nav_ul'>
       <li id='logo'>
-        <NavLink to="/"><i className="fa-brands fa-airbnb"></i>aAbnb</NavLink>
+        <NavLink to="/"><i className="fa-brands fa-airbnb"></i> aAbnb</NavLink>
       </li>
       {isLoaded && (
         <li>

@@ -11,7 +11,6 @@ const SpotDetail = () => {
     const dispatch = useDispatch();
     
     const spot = useSelector((state) => state.spots[spotId]);
-    console.log(spot);
 
     useEffect(() => {
         dispatch(loadOneSpot(spotId));
@@ -38,7 +37,7 @@ const SpotDetail = () => {
                 <span id="spot_price">${spot.price}</span><span> night</span>
                 </div>
                 <div>
-                <span>⭐️avgRating</span> <span>{spot.numReviews} {spot.numReviews === 1? "Review" : "Reviews"}</span>
+                <span>⭐️averageRating</span> <span>{spot.numReviews} {spot.numReviews === 1? "Review" : "Reviews"}</span>
                 </div>
                 <button onClick={handleReservation}>Reservation</button>
             </div>

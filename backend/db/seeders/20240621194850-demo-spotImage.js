@@ -490,26 +490,6 @@ const spotImageData = [
     preview: true,
   },
   {
-    spotId: 20,
-    url: "/images/camp4_2.webp",
-    preview: false,
-  },
-  {
-    spotId: 20,
-    url: "/images/camp4_3.webp",
-    preview: false,
-  },
-  {
-    spotId: 20,
-    url: "/images/camp4_4.webp",
-    preview: false,
-  },
-  {
-    spotId: 20,
-    url: "/images/camp4_5.webp",
-    preview: false,
-  },
-  {
     spotId: 21,
     url: "/images/camp5_1.webp",
     preview: true,

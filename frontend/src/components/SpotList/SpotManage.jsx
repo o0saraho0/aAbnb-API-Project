@@ -26,13 +26,15 @@ const SpotManage = () => {
           <ConfirmDeleteModal
             onDelete={() => handleDeleteConfirm(spotId)}
             onClose={closeModal}
+            message="Are you sure you want to remove this spot?"
+            type="Spot"
           />
         );
     };
     
     const handleDeleteConfirm = async (spotId) => {
-    await dispatch(deleteSpot(spotId));
-    closeModal();
+        await dispatch(deleteSpot(spotId));
+        closeModal();
     };
 
     return (

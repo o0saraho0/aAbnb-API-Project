@@ -57,3 +57,8 @@
 .confirm_deletion > .dark_grey_button {
   background-color: darkgray;
 }
+
+.confirm_deletion > .dark_grey_button:hover {
+  cursor: pointer;
+  background-color: rgb(200, 199, 199);
+}

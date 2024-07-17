@@ -50,9 +50,9 @@ function LoginFormModal() {
             onChange={(e) => setCredential(e.target.value)}
           />
         </label>
-        {errors.credential && (
+        {/* {errors.credential && (
           <p className='error_message'>{errors.credential}</p>
-        )}
+        )} */}
         <label>
           Password
           <input
@@ -61,9 +61,9 @@ function LoginFormModal() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        {errors.password && (
+        {/* {errors.password && (
           <p className='error_message'>{errors.password}</p>
-        )}
+        )} */}
         {errors.message && (
           <p className='error_message'>{errors.message}</p>
         )}

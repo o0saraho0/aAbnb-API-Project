@@ -43,11 +43,13 @@ const SpotManage = () => {
             <button><Link to={"/spots/new"}>Create a New Spot</Link></button>
 
             <div className="current_image_container">
-            {filteredSpots.map((spot) => (
+            {filteredSpots
+            .sort((a, b) => b.id - a.id)
+            .map((spot) => (
             <div key={spot.id} className="spotlist_small_container">
             <Link key={spot.id} to={`/spots/${spot.id}`} className="spotlist_small_container_link">
             <img src={spot.previewImage} alt={spot.name} />
-                <h4>{spot.name}</h4>
+                {/* <h4>{spot.name}</h4> */}
 
                 <div className='spotlist_preview'>
                 <span>{spot.city}, {spot.state}</span>

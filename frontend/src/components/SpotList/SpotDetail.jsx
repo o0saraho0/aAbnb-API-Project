@@ -34,16 +34,16 @@ const SpotDetail = () => {
             </div>
             <div className="reservation_container">
                 <div className="price_container">
-                <span id="spot_price">${spot.price}</span><span> night</span>
+                <span id="spot_price">${spot.price}</span><span>night</span>
                 </div>
                 <div className="booking">
                     <div className="checkin">
                         <label>CHECK-IN</label>
-                        <input type="date"/>
+                        <input type="date" className="booking_input"/>
                     </div>
                     <div className="checkout">
                         <label>CHECKOUT</label>
-                        <input type="date"/>
+                        <input type="date" className="booking_input"/>
                     </div>
 
                 </div>

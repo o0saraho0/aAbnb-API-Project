@@ -14,10 +14,11 @@
   display: none;
 }
 
+
 .nav_ul {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   list-style: none;
   margin: 20px 30px;
 }

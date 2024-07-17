@@ -34,6 +34,10 @@
   margin: 10px 0px;
 }
 
+.reservation_container * {
+  margin: 5px 0px;
+}
+
 #spot_price {
   font-size: large;
   font-weight: 500;

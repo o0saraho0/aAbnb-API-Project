@@ -6,7 +6,6 @@ import './ReviewList.css'
 const ReviewList = ({spotId}) => {
     const dispatch = useDispatch();
     const reviews = useSelector((state) => state.reviews[spotId]);
-    // console.log("review in component", reviews);
 
     useEffect(() => {
         dispatch(getSpotReviews(spotId));
@@ -16,14 +15,21 @@ const ReviewList = ({spotId}) => {
 
     return (
         <div className="reviewlist_container">
-        <h3>⭐️ {} · {reviews.Reviews.length} {reviews.Reviews.length === 1? "Review" : "Reviews"}</h3>
-        {reviews.Reviews.map((review) => (
-            <div key={review.id} className="reviewList_small_container">
-                <h3>{review.User.firstName}</h3>
-                <p>{review.updatedAt.slice(0,7)}</p>
-                <p>{review.review}</p>
-            </div>
-        ))}
+        <h3>
+            ⭐️ {reviews.avgRating} · {reviews.Reviews.length} {reviews.Reviews.length === 1 ? "Review" : "Reviews"}
+        </h3>
+        {reviews.Reviews.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)).map((review) => {
+            const date = new Date(review.updatedAt);
+            const formattedDate = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(date);
+
+            return (
+                <div key={review.id} className="reviewList_small_container">
+                    <h3>{review.User.firstName}</h3>
+                    <p>{formattedDate}</p>
+                    <p>{review.review}</p>
+                </div>
+            );
+        })}
         </div>
        
     )

@@ -50,6 +50,10 @@
   margin: 80px;
 }
 
-.confirm-delete-modal-content > .dark-grey-button {
+.confirm_deletion p {
+  margin-top: 10px;
+}
+
+.confirm_deletion > .dark_grey_button {
   background-color: darkgray;
 }

@@ -64,7 +64,7 @@ const SpotForm = ({ spot, formType }) => {
     };
 
     let newSpot;
-    if (formType === 'Update your Spot') {
+    if (formType === 'Update Your Spot') {
       newSpot = await dispatch(editSpot(spotData));
     } else if (formType === 'Create a New Spot') {
       newSpot = await dispatch(createSpot(spotData));
@@ -212,7 +212,7 @@ const SpotForm = ({ spot, formType }) => {
       
       <button 
       type="submit">
-        {formType === "Create a New Spot"? "Create Spot": "Update Spot"}
+        {formType === "Create a New Spot"? "Create Spot": "Update Your Spot"}
       </button>
     </form>
     </div>

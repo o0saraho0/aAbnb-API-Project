@@ -43,13 +43,6 @@
   background-color: #fb7a7e;
 }
 
-.spotlist_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  margin: 80px;
-}
-
 .confirm_deletion p {
   margin-top: 10px;
 }

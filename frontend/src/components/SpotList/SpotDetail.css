@@ -40,13 +40,13 @@
 
 .price_container {
   text-align: end;
-  margin-bottom: 20px;
 }
 
 #spot_price {
   font-size: x-large;
   font-weight: 500;
   color: #ff5a60;
+  padding-right: 5px;
 }
 
 .reservation_container button {
@@ -67,12 +67,14 @@
 
 .checkin {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
 .checkout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+}
+
+.booking_input {
+  width: 90%;
 }

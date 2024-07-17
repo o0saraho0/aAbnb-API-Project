@@ -1,6 +1,13 @@
+.spotlist_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin: 70px;
+}
+
 .spotlist_small_container {
   width: 200px;
-  margin: 20px 20px 10px 0px;
+  margin: 20px 20px 0px 0px;
 }
 
 .spotlist_small_container_link {
@@ -19,12 +26,17 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
-  bottom: 190px;
+  bottom: 230px;
   text-align: center;
   font-weight: 550;
 }
 
+.no-show {
+  color: white;
+}
+
 .spotlist_preview {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }

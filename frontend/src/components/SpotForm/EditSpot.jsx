@@ -21,7 +21,7 @@ const EditSpot = () => {
       <>
         <SpotForm
           spot={spot}
-          formType="Update your Spot"
+          formType="Update Your Spot"
         />
       </>
     )

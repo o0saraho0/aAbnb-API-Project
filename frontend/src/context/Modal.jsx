@@ -11,9 +11,7 @@ export function ModalProvider({ children }) {
   const [onModalClose, setOnModalClose] = useState(null);
 
   const closeModal = () => {
-    setModalContent(null); // clear the modal contents
-    // If callback function is truthy, call the callback function and reset it
-    // to null:
+    setModalContent(null);
     if (typeof onModalClose === "function") {
       setOnModalClose(null);
       onModalClose();
@@ -48,7 +46,7 @@ export function Modal() {
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={closeModal} />
-      <div id="modal-content">{modalContent}</div>
+      <div className="modal-content">{modalContent}</div>
     </div>,
     modalRef.current
   );

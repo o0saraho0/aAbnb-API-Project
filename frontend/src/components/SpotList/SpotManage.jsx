@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadCurrentSpots } from "../../store/spot";
+import { loadCurrentSpots, deleteSpot } from "../../store/spot";
+import { useModal } from '../../context/Modal';
+import ConfirmDeleteModal from '../ConfirmDeletionModal';
 import './SpotList.css'
 
 const SpotManage = () => {
+    const { setModalContent, closeModal } = useModal();
+
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.session.user);
     const spots = useSelector((state) => state.spots);
@@ -17,8 +21,18 @@ const SpotManage = () => {
 
     if (!spots) return null;
 
-    const handleDelete = () => {
-        
+    const handleDeleteClick = (spotId) => {
+        setModalContent(
+          <ConfirmDeleteModal
+            onDelete={() => handleDeleteConfirm(spotId)}
+            onClose={closeModal}
+          />
+        );
+    };
+    
+    const handleDeleteConfirm = async (spotId) => {
+    await dispatch(deleteSpot(spotId));
+    closeModal();
     };
 
     return (
@@ -41,9 +55,11 @@ const SpotManage = () => {
             </Link>
 
             <div className="current_spotlist_buttons">
-                    <button><Link to={`/spots/${spot.id}/edit`}>Update</Link></button>
-                    <button onClick={handleDelete}>Delete</button>
-                </div>
+                <button><Link to={`/spots/${spot.id}/edit`}>Update</Link></button>
+                <button onClick={() => handleDeleteClick(spot.id)}>Delete</button>
+            </div>
+
+            
             </div>
 
             ))}

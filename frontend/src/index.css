@@ -9,6 +9,7 @@
 h1 {
   font-size: 25px;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -53,33 +54,4 @@ form label {
   justify-content: space-between;
   gap: 10px;
   width: 100%;
-}
-
-#modal-content {
-  border-radius: 10px;
-  padding: 50px;
-  text-align: center;
-}
-
-#modal-content button {
-  padding: 10px 30px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  background-color: #ff5a60;
-  width: 100%;
-}
-
-#modal-content button:hover {
-  cursor: pointer;
-  background-color: #fb7a7e;
-}
-
-.spotlist_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  margin: 80px;
 }

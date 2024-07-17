@@ -38,3 +38,8 @@
   background-color: #ff5a60;
   margin: 50px auto;
 }
+
+.current_spotlist_container button a {
+  text-decoration: none;
+  color: white;
+}

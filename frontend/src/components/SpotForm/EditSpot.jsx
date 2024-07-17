@@ -1,32 +1,31 @@
-// import { useParams } from 'react-router-dom';
-// import ReportForm from './ReportForm';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getSingleReport, updateReport } from '../store/reports';
-// import { useEffect } from 'react';
-
-// const EditReportForm = () => {
-//   const { reportId } = useParams();
-//   const dispatch = useDispatch();
-//   const report = useSelector(state => state.reports[reportId]);
-
-//   useEffect(() => {
-//     dispatch(getSingleReport(reportId))
-//   }, [dispatch, reportId])
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loadOneSpot } from '../../store/spot';
+import SpotForm from './SpotForm';
 
 
-//   if (!report) return(<></>);
+const EditSpot = () => {
+  const { spotId } = useParams();
+  const dispatch = useDispatch();
+  const spot = useSelector(state => state.spots[spotId]);
 
-//   /* **DO NOT CHANGE THE RETURN VALUE** */
-//   return (
-//     Object.keys(report).length > 1 && (
-//       <>
-//         <ReportForm
-//           report={report}
-//           formType="Update Report"
-//         />
-//       </>
-//     )
-//   );
-// };
+  useEffect(() => {
+    dispatch(loadOneSpot(spotId))
+  }, [dispatch, spotId])
 
-// export default EditReportForm;
+  if (!spot) return null;
+
+  return (
+    Object.keys(spot).length > 1 && (
+      <>
+        <SpotForm
+          spot={spot}
+          formType="Update your Spot"
+        />
+      </>
+    )
+  );
+};
+
+export default EditSpot;

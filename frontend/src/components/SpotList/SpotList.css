@@ -1,6 +1,6 @@
 .spotlist_small_container {
   width: 200px;
-  margin: 15px;
+  margin: 20px 20px 10px 0px;
 }
 
 .spotlist_small_container_link {
@@ -31,4 +31,47 @@
 
 .spotlist_preview_price {
   font-weight: 550;
+}
+
+.current_spotlist_container {
+  margin: 30px 80px;
+}
+
+.current_image_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.current_spotlist_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current_spotlist_container a {
+  text-decoration: none;
+}
+.current_spotlist_container button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff5a60;
+  width: 200px;
+  margin: 5px 0px 20px;
+}
+
+.current_spotlist_buttons button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  background-color: #ff5a60;
+  width: 40%;
+  margin: 10px 5px;
+}
+
+.current_spotlist_buttons button:hover {
+  cursor: pointer;
+  background-color: #fb7a7e;
 }

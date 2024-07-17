@@ -33,13 +33,24 @@ const SpotDetail = () => {
                 <p>{spot.description}</p>
             </div>
             <div className="reservation_container">
-                <div>
+                <div className="price_container">
                 <span id="spot_price">${spot.price}</span><span> night</span>
                 </div>
-                <div>
-                <span>⭐️averageRating</span> <span>{spot.numReviews} {spot.numReviews === 1? "Review" : "Reviews"}</span>
+                <div className="booking">
+                    <div className="checkin">
+                        <label>CHECK-IN</label>
+                        <input type="date"/>
+                    </div>
+                    <div className="checkout">
+                        <label>CHECKOUT</label>
+                        <input type="date"/>
+                    </div>
+
                 </div>
-                <button onClick={handleReservation}>Reservation</button>
+                {/* <div>
+                <span>⭐️averageRating</span> <span>{spot.numReviews} {spot.numReviews === 1? "Review" : "Reviews"}</span>
+                </div> */}
+                <button onClick={handleReservation}>Reserve</button>
             </div>
             </div>
             <ReviewList spotId={spotId}/>

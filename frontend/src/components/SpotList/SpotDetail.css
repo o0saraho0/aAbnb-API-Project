@@ -38,9 +38,15 @@
   margin: 5px 0px;
 }
 
+.price_container {
+  text-align: end;
+  margin-bottom: 20px;
+}
+
 #spot_price {
-  font-size: large;
+  font-size: x-large;
   font-weight: 500;
+  color: #ff5a60;
 }
 
 .reservation_container button {
@@ -57,4 +63,16 @@
 .reservation_container button:hover {
   cursor: pointer;
   background-color: #fb7a7e;
+}
+
+.checkin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

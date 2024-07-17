@@ -60,6 +60,11 @@
   margin: 5px 0px 20px;
 }
 
+.current_spotlist_container button:hover {
+  cursor: pointer;
+  background-color: #fb7a7e;
+}
+
 .current_spotlist_buttons button {
   padding: 5px 20px;
   border: none;

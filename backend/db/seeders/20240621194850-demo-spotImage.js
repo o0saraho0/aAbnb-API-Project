@@ -286,12 +286,12 @@ const spotImageData = [
   },
   {
     spotId: 12,
-    url: "/images/beach4_1.webp",
+    url: "/images/beach4_2.webp",
     preview: true,
   },
   {
     spotId: 12,
-    url: "/images/beach4_2.webp",
+    url: "/images/beach4_5.webp",
     preview: false,
   },
   {
@@ -306,7 +306,7 @@ const spotImageData = [
   },
   {
     spotId: 12,
-    url: "/images/beach4_5.webp",
+    url: "/images/beach4_1.webp",
     preview: false,
   },
   {

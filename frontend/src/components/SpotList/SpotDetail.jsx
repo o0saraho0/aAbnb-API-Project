@@ -43,11 +43,13 @@ const SpotDetail = () => {
                 <div className="price_container">
                 <span id="spot_price">${spot.price}</span><span>night</span>
                 </div>
-                {/* <div className="reservation_rating">⭐️ {!spot.avgRating ? "New" : <>{spot.avgRating} · {spot.numReviews} {spot.numReviews === 1 ? "Review" : "Reviews"}</>}
+
+                {/* <div className="reservation_rating">
+                    ⭐️ {averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}
                 </div> */}
 
                 <div className="reservation_rating">
-                    ⭐️ {averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}
+                    ⭐️ {!averageRating? "New": <>{averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}</>} 
                 </div>
                 
                 

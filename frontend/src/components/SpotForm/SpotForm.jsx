@@ -11,8 +11,8 @@ const SpotForm = ({ spot, formType }) => {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [lat, setLat] = useState('');
-  const [lng, setLng] = useState('');
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
   const [description, setDescription] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -42,8 +42,32 @@ const SpotForm = ({ spot, formType }) => {
     }
   }, [spot]);
 
+  const validateForm = () => {
+    let error = {};
+    if (!country) error.country = "Country is required";
+    if (!address) error.streetaddress = "Street address is required";
+    if (!city) error.city = "City is required";
+    if (!state) error.state = "State is required";
+    if (lat > 90 || lat < -90)
+      error.lat = "Latitude must be within -90 and 90";
+    if (lng > 180 || lng < -180)
+      error.lng = "Longitude must be within -180 and 180";
+    if (!description || description.length < 30)
+      error.description = "Description needs 30 or more characters";
+    if (!price) error.price = "Price is required";
+    if (!name) error.name = "Name is required";
+    if (!image1) error.previewurl = "Preview image is required.";
+    return error;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.values(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+    
     setErrors({});
     const spotData = {
       ...spot,
@@ -81,7 +105,12 @@ const SpotForm = ({ spot, formType }) => {
     <div className='spot_form'>
     <form  onSubmit={handleSubmit}>
       <h1>{formType}</h1>
-      <div className="errors">{errors.address}</div>
+      <div className="error_message">
+          {Object.values(errors).map((error, idx) => (
+            <div key={idx}>{error}</div>
+          ))}
+        </div>
+      
       <div className='spot_location'>
       <h2>Where&apos;s your place located?</h2>
       <p>Guests will only get your exact address once they booked a reservation.</p>

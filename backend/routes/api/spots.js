@@ -340,7 +340,16 @@ router.get("/current", requireAuth, async (req, res) => {
 // Get details of a Spot from an id
 router.get("/:spotId", async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId, {
+    attributes: {
+      include: [
+        [Sequelize.fn("AVG", Sequelize.col("Reviews.stars")), "avgRating"],
+      ],
+    },
     include: [
+      {
+        model: Review,
+        attributes: [],
+      },
       { model: SpotImage },
       {
         model: User,
@@ -364,6 +373,9 @@ router.get("/:spotId", async (req, res) => {
   spot.dataValues.numReviews = reviews.length;
   spot.dataValues.createdAt = formatTime(spot.dataValues.createdAt);
   spot.dataValues.updatedAt = formatTime(spot.dataValues.updatedAt);
+  spot.dataValues.avgRating = spot.dataValues.avgRating
+    ? parseFloat(spot.dataValues.avgRating).toFixed(1)
+    : null;
 
   return res.status(200).json(spot);
 });

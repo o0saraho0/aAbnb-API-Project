@@ -72,7 +72,6 @@ const initialState = {};
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_REVIEWS: {
-      console.log("load_all_review_prestate", state);
       const { spotId, reviews } = action.reviews;
       return {
         ...state,

@@ -81,6 +81,7 @@ export const createSpot = (spot) => async (dispatch) => {
     return newSpot;
   } else {
     const error = await response.json();
+    console.log("error in store", error);
     return error.errors;
   }
 };

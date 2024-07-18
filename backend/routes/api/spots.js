@@ -350,13 +350,14 @@ router.get("/:spotId", async (req, res) => {
         model: Review,
         attributes: [],
       },
-      { model: SpotImage },
+      { model: SpotImage, attributes: ["id", "url", "preview"] },
       {
         model: User,
         attributes: ["id", "firstName", "lastName"],
         as: "Owner",
       },
     ],
+    group: ["Spot.id", "SpotImages.id"],
   });
 
   if (!spot) {
@@ -375,7 +376,7 @@ router.get("/:spotId", async (req, res) => {
   spot.dataValues.updatedAt = formatTime(spot.dataValues.updatedAt);
   spot.dataValues.avgRating = spot.dataValues.avgRating
     ? parseFloat(spot.dataValues.avgRating).toFixed(1)
-    : null;
+    : "New";
 
   return res.status(200).json(spot);
 });
@@ -445,8 +446,8 @@ router.get("/", validateQuery, async (req, res) => {
       createdAt: formatTime(spot.createdAt),
       updatedAt: formatTime(spot.updatedAt),
       avgRating: spot.dataValues.avgRating
-        ? Math.round(spot.dataValues.avgRating * 10) / 10
-        : "No rating yet.",
+        ? parseFloat(spot.dataValues.avgRating).toFixed(1)
+        : "New",
       previewImage: spot.SpotImages.length
         ? spot.SpotImages[0].url
         : "No preview image yet.",

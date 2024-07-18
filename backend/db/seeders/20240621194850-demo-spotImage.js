@@ -486,28 +486,128 @@ const spotImageData = [
   },
   {
     spotId: 20,
-    url: "/images/camp4_1.webp",
-    preview: true,
-  },
-  {
-    spotId: 21,
     url: "/images/camp5_1.webp",
     preview: true,
   },
   {
-    spotId: 22,
+    spotId: 20,
+    url: "/images/camp5_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp5_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp5_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 20,
+    url: "/images/camp5_5.webp",
+    preview: false,
+  },
+  {
+    spotId: 21,
     url: "/images/camp6_1.webp",
     preview: true,
   },
   {
-    spotId: 23,
+    spotId: 21,
+    url: "/images/camp6_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 21,
+    url: "/images/camp6_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 21,
+    url: "/images/camp6_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 21,
+    url: "/images/camp6_5.webp",
+    preview: false,
+  },
+  {
+    spotId: 22,
     url: "/images/camp7_1.webp",
     preview: true,
   },
   {
-    spotId: 24,
+    spotId: 22,
+    url: "/images/camp7_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 22,
+    url: "/images/camp7_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 22,
+    url: "/images/camp7_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 22,
+    url: "/images/camp7_5.webp",
+    preview: false,
+  },
+  {
+    spotId: 23,
     url: "/images/camp8_1.webp",
     preview: true,
+  },
+  {
+    spotId: 23,
+    url: "/images/camp8_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 23,
+    url: "/images/camp8_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 23,
+    url: "/images/camp8_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 23,
+    url: "/images/camp8_5.webp",
+    preview: false,
+  },
+  {
+    spotId: 24,
+    url: "/images/camp4_1.webp",
+    preview: true,
+  },
+  {
+    spotId: 24,
+    url: "/images/camp4_2.webp",
+    preview: false,
+  },
+  {
+    spotId: 24,
+    url: "/images/camp4_3.webp",
+    preview: false,
+  },
+  {
+    spotId: 24,
+    url: "/images/camp4_4.webp",
+    preview: false,
+  },
+  {
+    spotId: 24,
+    url: "/images/camp4_5.webp",
+    preview: false,
   },
 ];
 

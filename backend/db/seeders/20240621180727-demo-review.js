@@ -277,7 +277,7 @@ const reviewData = [
   },
   {
     spotId: 22,
-    userId: 28,
+    userId: 8,
     review:
       "Meadow Camp was a beautiful campsite. The meadow views were peaceful, and we saw plenty of wildlife. Perfect for a nature-filled camping trip.",
     stars: 4,

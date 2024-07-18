@@ -11,8 +11,8 @@ const SpotForm = ({ spot, formType }) => {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+  const [lat, setLat] = useState('');
+  const [lng, setLng] = useState('');
   const [description, setDescription] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -48,9 +48,9 @@ const SpotForm = ({ spot, formType }) => {
     if (!address) error.streetaddress = "Street address is required";
     if (!city) error.city = "City is required";
     if (!state) error.state = "State is required";
-    if (lat > 90 || lat < -90)
+    if (!lat || lat > 90 || lat < -90)
       error.lat = "Latitude must be within -90 and 90";
-    if (lng > 180 || lng < -180)
+    if (!lng || lng > 180 || lng < -180)
       error.lng = "Longitude must be within -180 and 180";
     if (!description || description.length < 30)
       error.description = "Description needs 30 or more characters";

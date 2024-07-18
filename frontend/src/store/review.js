@@ -80,7 +80,6 @@ const reviewsReducer = (state = initialState, action) => {
       };
     }
     case CREATE_REVIEW: {
-      console.log("create_review_prestate", state);
       const review = action.review;
       const spotId = review.spotId;
       const spotReviews = state[spotId] ? state[spotId].Reviews : [];

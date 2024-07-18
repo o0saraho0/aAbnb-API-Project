@@ -32,7 +32,6 @@ const ReviewList = ({ spotId }) => {
     };
 
     const handleDeleteClick = (reviewId) => {
-        console.log("Delete clicked for reviewId:", reviewId); // Log the reviewId
         setModalContent(
             <ConfirmDeleteModal
                 onDelete={() => handleDeleteConfirm(reviewId, spotId)}
@@ -44,7 +43,6 @@ const ReviewList = ({ spotId }) => {
     };
 
     const handleDeleteConfirm = async (reviewId, spotId) => {
-        console.log("Deleting review with reviewId:", reviewId, "and spotId:", spotId); // Log reviewId and spotId
         await dispatch(deleteReview(reviewId, spotId));
         closeModal();
     };

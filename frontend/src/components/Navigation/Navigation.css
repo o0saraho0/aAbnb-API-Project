@@ -14,21 +14,22 @@
   display: none;
 }
 
-
 .nav_ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin: 20px 30px;
+  padding: 50px;
+  border-bottom: 1px solid lightgray;
 }
 
 #logo a {
   text-decoration: none;
   color: #ff5a60;
-  font-size: x-large;
+  font-size: large;
+  font-weight: 500;
 }
 
 .fa-airbnb {
-  font-size: x-large;
+  font-size: large;
 }

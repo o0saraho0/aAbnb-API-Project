@@ -26,7 +26,11 @@ const SpotList = () => {
         onMouseOut={()=>setToolTip(null)}
         onMouseOver={()=>setToolTip(spot.id)}
         className="spotlist_small_container">
-            <Link key={spot.id} to={`/spots/${spot.id}`} className="spotlist_small_container_link">
+            <Link
+          key={spot.id}
+          to={`/spots/${spot.id}`}
+          className="spotlist_small_container_link"
+        >
             <img src={spot.previewImage} alt={spot.name} />
 
                 <div className="spotlist_desc">

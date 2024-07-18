@@ -37,7 +37,8 @@ const SpotDetail = () => {
                 <div className="price_container">
                 <span id="spot_price">${spot.price}</span><span>night</span>
                 </div>
-                <div>⭐️ averageRating</div>
+                <div className="reservation_rating">⭐️ {!spot.avgRating ? "New" : <>{spot.avgRating} · {spot.numReviews} {spot.numReviews === 1 ? "Review" : "Reviews"}</>}
+                </div>
                 <div className="booking">
                     <div className="checkin">
                         <label>CHECK-IN</label>

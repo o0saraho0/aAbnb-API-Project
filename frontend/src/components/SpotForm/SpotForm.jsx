@@ -25,6 +25,7 @@ const SpotForm = ({ spot, formType }) => {
 
   useEffect(() => {
     if (spot) {
+      // console.log("spot in form", spot);
       setCountry(spot.country || '');
       setAddress(spot.address || '');
       setCity(spot.city || '');
@@ -56,7 +57,7 @@ const SpotForm = ({ spot, formType }) => {
       error.description = "Description needs 30 or more characters";
     if (!price) error.price = "Price is required";
     if (!name) error.name = "Name is required";
-    if (!previewImage) error.previewurl = "Preview image is required.";
+    // if (!previewImage) error.previewurl = "Preview image is required.";
     return error;
   };
 
@@ -225,6 +226,7 @@ const SpotForm = ({ spot, formType }) => {
       {errors.price && <p className='error_message'>{errors.price}</p>}
       </div>
 
+      {formType === 'Create a New Spot'? 
       <div className='spotImage_links'>
       <h2>Liven up your spot with photos</h2>
       <p>Submit a link to at least one photo to publish your spot.</p>
@@ -235,6 +237,7 @@ const SpotForm = ({ spot, formType }) => {
           value={previewImage}
           placeholder='Preview Image URL'
           onChange={(e) => setPreviewImage(e.target.value)}
+          required
         />
          {errors.previewurl && <p className='error_message'>{errors.previewurl}</p>}
          <input
@@ -267,8 +270,9 @@ const SpotForm = ({ spot, formType }) => {
         />
       </label>
       </div>
+      : <></>}
       
-      <button 
+      <button
       type="submit">
         {formType === "Create a New Spot"? "Create Spot": "Update Your Spot"}
       </button>

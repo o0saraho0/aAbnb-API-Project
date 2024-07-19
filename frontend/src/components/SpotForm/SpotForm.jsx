@@ -237,7 +237,6 @@ const SpotForm = ({ spot, formType }) => {
           value={previewImage}
           placeholder='Preview Image URL'
           onChange={(e) => setPreviewImage(e.target.value)}
-          // required
         />
          {errors.previewurl && <p className='error_message'>{errors.previewurl}</p>}
          <input

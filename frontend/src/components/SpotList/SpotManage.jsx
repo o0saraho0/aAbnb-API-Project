@@ -13,7 +13,9 @@ const SpotManage = () => {
     const currentUser = useSelector((state) => state.session.user);
     const spots = useSelector((state) => state.spots);
     const spotsArray = Object.values(spots);
-    const filteredSpots = spotsArray.filter(spot => spot.ownerId === currentUser.id)
+    const filteredSpots = spotsArray.filter(spot => spot?.ownerId === currentUser?.id)
+    console.log("spotsArray", spotsArray);
+
 
     useEffect(() => {
         dispatch(loadCurrentSpots());

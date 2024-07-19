@@ -25,6 +25,8 @@ const SpotDetail = () => {
 
     if (!spot || !spot.Owner ) return null;
 
+    console.log("spot--->", spot);
+
     const handleReservation = () => {
         alert("Feature coming soon");
     }

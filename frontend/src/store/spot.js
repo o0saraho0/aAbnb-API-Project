@@ -5,6 +5,8 @@ const LOAD_ONE_SPOT = "spot/LOAD_ONE_SPOT";
 const CREATE_SPOT = "spot/CREATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT";
 
+const CREATE_IMAGE = "image/CREATE_IMAGE";
+
 const loadSpot = (spots) => {
   return {
     type: LOAD_SPOT,
@@ -30,6 +32,13 @@ const removeSpot = (spotId) => {
   return {
     type: DELETE_SPOT,
     spotId,
+  };
+};
+
+const createImage = (spot) => {
+  return {
+    type: CREATE_IMAGE,
+    payload: spot,
   };
 };
 
@@ -78,16 +87,16 @@ export const createSpot = (spot) => async (dispatch) => {
   if (response.ok) {
     const newSpot = await response.json();
     dispatch(addSpot(newSpot));
+    dispatch(loadAllSpots());
     return newSpot;
   } else {
     const error = await response.json();
-    console.log("error in store", error);
     return error.errors;
   }
 };
 
 export const editSpot = (spot) => async (dispatch) => {
-  console.log("spot in store", spot);
+  // console.log("spot in store", spot);
   const response = await csrfFetch(`/api/spots/${spot.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -96,7 +105,7 @@ export const editSpot = (spot) => async (dispatch) => {
   if (response.ok) {
     const updatedSpot = await response.json();
     dispatch(addSpot(updatedSpot));
-    console.log("updated? -->", updatedSpot);
+    // console.log("updated? -->", updatedSpot);
     return updatedSpot;
   } else {
     const error = await response.json();
@@ -117,6 +126,27 @@ export const deleteSpot = (spotId) => async (dispatch) => {
   }
 };
 
+// Add Image Thunk
+export const addImage = (image) => async (dispatch) => {
+  // console.log("image in store", image);
+  const { spotId, url, preview } = image;
+  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url, preview }),
+  });
+  if (response.ok) {
+    const newImage = await response.json();
+    // console.log("newImage in store", newImage);
+    dispatch(createImage(newImage));
+    return newImage;
+  } else {
+    const error = await response.json();
+    // console.log("error--->", error);
+    return error;
+  }
+};
+
 const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
@@ -133,13 +163,34 @@ const spotsReducer = (state = initialState, action) => {
       newState[action.spot.id] = action.spot;
       return newState;
     }
-    case CREATE_SPOT:
-      return { ...state, [action.spot.id]: action.spot };
+    case CREATE_SPOT: {
+      const newState = { ...state };
+      newState[action.spot.id] = action.spot;
+      return newState;
+    }
     case DELETE_SPOT: {
       const newState = { ...state };
       delete newState[action.spotId];
       return newState;
     }
+    case CREATE_IMAGE: {
+      // console.log("in the reducer", newState);
+      return { ...state, [action.payload.id]: action.image };
+    }
+
+    //  Shanda's:
+    //  ADD_SPOTIMAGES: {
+    //   const newState = { ...state };
+    //   const { spotId, url, preview } = action.payload;
+    //   if (spotId && newState.spots[spotId]) {
+    //     newState.spots[spotId].SpotImages = [
+    //       ...(newState.spots[spotId].SpotImages || []),
+    //       { url, preview },
+    //     ];
+    //   }
+    // return newState;
+    // }
+
     default:
       return state;
   }

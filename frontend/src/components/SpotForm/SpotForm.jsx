@@ -57,7 +57,7 @@ const SpotForm = ({ spot, formType }) => {
       error.description = "Description needs 30 or more characters";
     if (!price) error.price = "Price is required";
     if (!name) error.name = "Name is required";
-    // if (!previewImage) error.previewurl = "Preview image is required.";
+    if (formType === 'Create a New Spot' && !previewImage) error.previewurl = "Preview image is required.";
     return error;
   };
 
@@ -237,7 +237,7 @@ const SpotForm = ({ spot, formType }) => {
           value={previewImage}
           placeholder='Preview Image URL'
           onChange={(e) => setPreviewImage(e.target.value)}
-          required
+          // required
         />
          {errors.previewurl && <p className='error_message'>{errors.previewurl}</p>}
          <input

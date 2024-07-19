@@ -372,7 +372,7 @@ router.get("/:spotId", async (req, res) => {
 router.get("/", validateQuery, async (req, res) => {
   const {
     page = 1,
-    size = 20,
+    size = 100,
     minLat,
     maxLat,
     minLng,
@@ -467,7 +467,7 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
   });
   newSpot.dataValues.createdAt = formatTime(newSpot.dataValues.createdAt);
   newSpot.dataValues.updatedAt = formatTime(newSpot.dataValues.updatedAt);
-
+  
   return res.status(201).json(newSpot);
 });
 

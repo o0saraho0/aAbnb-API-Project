@@ -15,7 +15,6 @@ const SpotImage = ({spotId}) => {
 
     const previewImage = spot.SpotImages.filter(image => image.preview === true);
     const smallImages = spot.SpotImages.filter(image => image.preview === false);
-    console.log(smallImages);
 
     return (
         <div className="spotdetail_image_container">

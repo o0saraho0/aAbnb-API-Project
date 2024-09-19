@@ -14,13 +14,17 @@
   display: none;
 }
 
+nav {
+  border-bottom: 1px solid lightgray;
+}
 .nav_ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
   padding: 50px;
-  border-bottom: 1px solid lightgray;
+  max-width: 1200px;
+  margin: 0px auto;
 }
 
 #logo a {

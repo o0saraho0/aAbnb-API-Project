@@ -283,19 +283,6 @@ const spotData = [
     price: 170,
   },
   {
-    ownerId: 6,
-    address: "900 Meadow Lane",
-    city: "Yellowstone National Park",
-    state: "Wyoming",
-    country: "United States of America",
-    lat: 44.428,
-    lng: -110.5885,
-    name: "Meadow Camp",
-    description:
-      "A scenic campsite in the meadow with wildlife sightings. Located in a beautiful meadow, this campsite offers a peaceful and scenic environment with frequent wildlife sightings. Enjoy the natural beauty of Yellowstone and the tranquility of camping in the open meadow.",
-    price: 160,
-  },
-  {
     ownerId: 7,
     address: "1000 Forest Path",
     city: "Yosemite National Park",
@@ -307,19 +294,6 @@ const spotData = [
     description:
       "A rustic campsite in Yosemite with hiking trails. This campsite is nestled within the majestic landscapes of Yosemite, offering direct access to numerous hiking trails. Perfect for nature enthusiasts looking to explore the park and enjoy rustic camping amidst breathtaking scenery.",
     price: 190,
-  },
-  {
-    ownerId: 8,
-    address: "1100 River Road",
-    city: "Grand Canyon",
-    state: "Arizona",
-    country: "United States of America",
-    lat: 36.1069,
-    lng: -112.1129,
-    name: "River Camp",
-    description:
-      "A campsite along the river with stunning canyon views. Located by the river, this campsite offers picturesque views of the Grand Canyon and the soothing sounds of flowing water. Ideal for those seeking a unique camping experience with incredible canyon vistas.",
-    price: 140,
   },
 ];
 

@@ -14,7 +14,6 @@ const SpotManage = () => {
     const spots = useSelector((state) => state.spots);
     const spotsArray = Object.values(spots);
     const filteredSpots = spotsArray.filter(spot => spot?.ownerId === currentUser?.id)
-    console.log("spotsArray", spotsArray);
 
 
     useEffect(() => {

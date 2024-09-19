@@ -1,14 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
-import * as sessionActions from '../../store/session';
-import OpenModalMenuItem from './OpenModalMenuItem';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
-import './ProfileButton.css';
-
+import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import * as sessionActions from "../../store/session";
+import OpenModalMenuItem from "./OpenModalMenuItem";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ function ProfileButton({ user }) {
       }
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
@@ -47,23 +46,28 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
-    <div className='profile-wrapper'>
-      <div className='profile_container'>
-      {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
-      <button onClick={toggleMenu}>
-        <FaUserCircle />
-      </button>
+    <div className="profile-wrapper">
+      <div className="profile_container">
+        {user && (
+          <div id="create_link">
+            <Link to={"/spots/new"}>Create a New Spot</Link>
+          </div>
+        )}
+        <div className="user_icon" onClick={toggleMenu}>
+          <FaUserCircle />
+        </div>
       </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <li>Hello, {user.firstName}</li>
             <li>{user.email}</li>
-            <li><Link to={'/spots/current'}>Manage Spots</Link></li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <Link to={"/spots/current"}>Manage Spots</Link>
             </li>
-            
+            <li>
+              <div onClick={logout}>Log Out</div>
+            </li>
           </>
         ) : (
           <>

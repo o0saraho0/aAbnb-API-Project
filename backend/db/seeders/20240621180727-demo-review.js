@@ -277,13 +277,6 @@ const reviewData = [
   },
   {
     spotId: 22,
-    userId: 8,
-    review:
-      "Meadow Camp was a beautiful campsite. The meadow views were peaceful, and we saw plenty of wildlife. Perfect for a nature-filled camping trip.",
-    stars: 4,
-  },
-  {
-    spotId: 23,
     userId: 1,
     review:
       "Yosemite Camp was a great place to stay. The hiking trails were fantastic, and the campsite was well-equipped. Ideal for nature enthusiasts.",

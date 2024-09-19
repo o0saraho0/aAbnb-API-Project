@@ -11,6 +11,13 @@ const loadSpotReviews = ({ spotId, reviews }) => {
   };
 };
 
+const loadUserReviews = ({ userId, reviews }) => {
+  return {
+    type: LOAD_ALL_REVIEWS,
+    reviews: { userId, reviews },
+  };
+};
+
 const addReview = (review) => {
   return {
     type: CREATE_REVIEW,
@@ -31,6 +38,18 @@ export const getSpotReviews = (spotId) => async (dispatch) => {
   if (response.ok) {
     const reviews = await response.json();
     dispatch(loadSpotReviews({ spotId, reviews }));
+    return reviews;
+  } else {
+    const error = await response.json();
+    return error;
+  }
+};
+
+export const getUserReviews = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/current`);
+  if (response.ok) {
+    const reviews = await response.json();
+    dispatch(loadUserReviews({ userId, reviews }));
     return reviews;
   } else {
     const error = await response.json();

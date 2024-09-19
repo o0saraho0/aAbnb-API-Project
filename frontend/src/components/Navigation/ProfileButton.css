@@ -5,13 +5,38 @@
 
 .profile_container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  text-align: end;
+  align-items: center;
+}
+
+.profile_container button {
+  border: none;
+  padding: 0px;
+  color: black;
+  background-color: white;
+}
+
+.profile_container button:hover {
+  cursor: pointer;
 }
 
 .profile-dropdown {
   text-align: end;
   background-color: white;
+  border: 1px solid  lightgray;
+  border-radius: 5px;
+  z-index: 1;
+  margin: 5px;
+  padding: 10px;
+}
+
+.profile-dropdown * {
+  background-color: white;
+  margin: 5px;
+}
+
+#create_link {
+  margin-right: 10px;
 }
 
 #create_link a {
@@ -19,5 +44,12 @@
   color: #ff5a60;
   font-weight: 500;
   text-wrap: nowrap;
-  padding-right: 10px;
+}
+
+.user_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  cursor: pointer;
 }

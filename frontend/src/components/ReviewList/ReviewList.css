@@ -8,6 +8,12 @@
   margin-bottom: 70px;
 }
 
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
 .post-review-button {
   padding: 5px 20px;
   border: none;

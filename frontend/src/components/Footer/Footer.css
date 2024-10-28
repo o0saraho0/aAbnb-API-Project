@@ -1,0 +1,96 @@
+footer {
+  height: 12vh;
+  background-color: rgb(247, 245, 245);
+  padding: 25px 50px 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-max {
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.footer-max h3 {
+  margin-left: -200px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.sarah-content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sarah-pic img {
+  height: 80px;
+  width: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.sarah-pic img:hover {
+  transform: scale(1.1);
+}
+
+.sarah-contact {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sarah-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sarah-info p {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.sarah-contact a {
+  color: #55ad9b;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.sarah-contact a:hover {
+  transform: scale(1.2);
+}
+
+.app-intro p {
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  footer {
+    height: fit-content;
+    padding: 15px;
+  }
+
+  .footer-max {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+  }
+
+  .footer-max h3 {
+    margin-left: 0px;
+  }
+
+  .footer-content {
+    gap: 30px;
+  }
+}

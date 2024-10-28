@@ -1,12 +1,15 @@
 .profile-wrapper {
-  margin-right: 100px;
-  width: fit-content;
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-right: 60px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile_container {
   display: flex;
-  text-align: end;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .profile_container button {
@@ -23,16 +26,31 @@
 .profile-dropdown {
   text-align: end;
   background-color: white;
-  border: 1px solid  lightgray;
+  border: 1px solid lightgray;
   border-radius: 5px;
   z-index: 1;
-  margin: 5px;
-  padding: 10px;
+  position: relative;
+  top: 30px;
+  left: -35px;
 }
 
 .profile-dropdown * {
   background-color: white;
   margin: 5px;
+}
+
+.unclickable {
+  font-style: italic;
+  color: gray;
+}
+
+.clickable a {
+  text-decoration: none;
+  color: black;
+}
+
+.clickable *:hover {
+  color: #ff5a60;
 }
 
 #create_link {

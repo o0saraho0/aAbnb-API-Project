@@ -67,24 +67,31 @@
 .current_spotlist_container {
   max-width: 1200px;
   margin: 20px auto;
-  /* margin: 30px 80px; */
+  margin-bottom: 70px;
 }
 
 .current_image_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  gap: 20px
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+  gap: 40px;
 }
 
 .current_spotlist_buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 10px auto;
 }
 
 .current_spotlist_container a {
   text-decoration: none;
 }
+
+.manage-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+
 .current_spotlist_container button {
   padding: 5px 20px;
   border: none;
@@ -107,7 +114,6 @@
   font-size: 14px;
   background-color: #ff5a60;
   width: 40%;
-  margin: 10px 5px;
 }
 
 .current_spotlist_buttons button:hover {

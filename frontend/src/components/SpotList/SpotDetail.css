@@ -83,3 +83,12 @@
 .booking_input {
   width: 90%;
 }
+
+.map_container {
+  border-top: solid 1px lightgray;
+  margin-bottom: 50px;
+}
+
+.map_container h2 {
+  margin-top: 20px;
+}

@@ -51,13 +51,7 @@ const reviewData = [
       "Our stay at Nature's Nest was wonderful. The tree house was comfortable and well-equipped, and the surrounding nature was breathtaking. A perfect getaway spot.",
     stars: 4,
   },
-  {
-    spotId: 4,
-    userId: 8,
-    review:
-      "Our stay at the beach house was wonderful. The sound of the waves was so relaxing, and the beach was just a few steps away. The house was beautifully decorated and had everything we needed for a comfortable stay.",
-    stars: 4,
-  },
+
   {
     spotId: 4,
     userId: 1,
@@ -69,29 +63,15 @@ const reviewData = [
     spotId: 4,
     userId: 7,
     review:
-      "We were quite disappointed with our stay at the beach house. The house was not clean, and several amenities were broken or missing. The beach access was convenient, but the overall experience was far from what we expected.",
+      "We were quite disappointed with our stay at the tree house. The house was not clean, and several amenities were broken or missing. The overall experience was far from what we expected.",
     stars: 1,
-  },
-  {
-    spotId: 4,
-    userId: 10,
-    review:
-      "The beach house was absolutely stunning! The location was perfect, right on the beach with beautiful ocean views. The house was clean, spacious, and had all the amenities we needed.",
-    stars: 4,
   },
   {
     spotId: 5,
     userId: 9,
     review:
-      "We had an amazing time at the beach house. The proximity to the beach was unbeatable, and the sunsets were gorgeous. The house was well-equipped and very comfortable. Can't wait to come back!",
+      "We had an amazing time at the tree house. The proximity to the lake was unbeatable, and the sunsets were gorgeous. The house was well-equipped and very comfortable. Can't wait to come back!",
     stars: 5,
-  },
-  {
-    spotId: 5,
-    userId: 1,
-    review:
-      "We had a mixed experience during our stay at the beach house. The location was fantastic, with easy access to the beach and beautiful ocean views. However, the house itself was just average. While it was clean and had most of the necessary amenities, a few items were either broken or missing, which was a bit inconvenient. The overall experience was decent, but it didn't quite live up to our expectations. With a few improvements, this could be a great place to stay.",
-    stars: 3,
   },
   {
     spotId: 5,
@@ -183,6 +163,13 @@ const reviewData = [
     review:
       "Maui Beach Retreat was a fantastic tropical getaway. The private beach access was a highlight, and the house was beautifully decorated. Perfect for a relaxing vacation.",
     stars: 5,
+  },
+  {
+    spotId: 13,
+    userId: 8,
+    review:
+      "Our stay at the beach house was wonderful. The sound of the waves was so relaxing, and the beach was just a few steps away. The house was beautifully decorated and had everything we needed for a comfortable stay.",
+    stars: 4,
   },
   {
     spotId: 14,

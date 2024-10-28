@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const spotData = [
+  //spot 1
   {
     ownerId: 1,
     address: "456 Oak Avenue",
@@ -22,6 +23,7 @@ const spotData = [
       "A charming and cozy tree house nestled high up in the dense forest canopy. The tree house is constructed from rustic, natural wood, blending seamlessly with its surroundings. Large windows offer breathtaking views of the lush greenery and allow plenty of natural light to flood in.",
     price: 150,
   },
+  //spot 2
   {
     ownerId: 2,
     address: "789 Pine Road",
@@ -35,6 +37,7 @@ const spotData = [
       "An elevated tree house with mountain views. Constructed from rustic, natural wood, it blends seamlessly with its surroundings. Large windows offer breathtaking views of the mountains and allow plenty of natural light to flood in.",
     price: 200,
   },
+  //spot 3
   {
     ownerId: 3,
     address: "321 Birch Lane",
@@ -48,6 +51,7 @@ const spotData = [
       "A peaceful tree house surrounded by nature. Built with natural wood, it integrates harmoniously with the forest. Large windows provide stunning views of the surrounding greenery and let in ample sunlight.",
     price: 175,
   },
+  //spot 4
   {
     ownerId: 4,
     address: "789 Redwood Circle",
@@ -61,6 +65,7 @@ const spotData = [
       "A tree house high in the redwoods with stunning views. Crafted from rustic, natural wood, it blends perfectly with the majestic redwoods. Large windows offer breathtaking views and plenty of natural light.",
     price: 225,
   },
+  //spot 5
   {
     ownerId: 5,
     address: "123 Willow Way",
@@ -74,6 +79,7 @@ const spotData = [
       "A charming tree house surrounded by willow trees. Made from natural wood, it harmonizes with the graceful willow trees. Large windows provide beautiful views and let in abundant sunlight.",
     price: 195,
   },
+  //spot 6
   {
     ownerId: 6,
     address: "456 Maple Street",
@@ -87,6 +93,7 @@ const spotData = [
       "A peaceful tree house nestled among maple trees. Constructed from rustic wood, it blends seamlessly with the maple grove. Large windows offer picturesque views and allow plenty of natural light.",
     price: 180,
   },
+  //spot 7
   {
     ownerId: 7,
     address: "789 Cedar Lane",
@@ -100,6 +107,7 @@ const spotData = [
       "A unique tree house in a cedar forest with mountain views. Built from natural wood, it fits perfectly among the cedar trees. Large windows provide breathtaking views and let in plenty of sunlight.",
     price: 210,
   },
+  //spot 8
   {
     ownerId: 8,
     address: "123 Pine Drive",
@@ -113,6 +121,7 @@ const spotData = [
       "A cozy tree house in the Adirondacks with lake views. Made from rustic wood, it integrates well with the surrounding pines. Large windows offer stunning views of the lake and allow ample natural light.",
     price: 230,
   },
+  //spot 9
   {
     ownerId: 1,
     address: "101 Ocean Drive",
@@ -126,6 +135,7 @@ const spotData = [
       "A luxurious beach house with ocean views. Constructed with elegant design, it offers direct views of the ocean from large windows that flood the space with natural light. The perfect getaway for a serene and opulent beach experience.",
     price: 300,
   },
+  //spot 10
   {
     ownerId: 2,
     address: "202 Shoreline Blvd",
@@ -139,6 +149,7 @@ const spotData = [
       "A charming beach house perfect for watching sunsets. Built with a cozy and inviting design, it features large windows that offer stunning views of the sunset over the ocean. Ideal for a romantic and tranquil beach stay.",
     price: 250,
   },
+  //spot 11
   {
     ownerId: 3,
     address: "303 Seaside Avenue",
@@ -152,6 +163,7 @@ const spotData = [
       "A relaxing beach house with direct access to the beach. Constructed with a soothing design, it provides easy access to the beach and features large windows that let in ample natural light. Perfect for a peaceful beachside retreat.",
     price: 275,
   },
+  //spot 12
   {
     ownerId: 4,
     address: "404 Ocean View Drive",
@@ -165,6 +177,7 @@ const spotData = [
       "A stunning beach house with panoramic ocean views. Built with a luxurious and modern design, it offers breathtaking views of the ocean from large windows. An exquisite location for a lavish and scenic beach escape.",
     price: 450,
   },
+  //spot 13
   {
     ownerId: 5,
     address: "505 Coastal Road",
@@ -178,6 +191,7 @@ const spotData = [
       "A tropical beach house with private beach access. Constructed with a vibrant and tropical design, it features direct access to a private beach and large windows that provide stunning views of the ocean. Ideal for an exclusive and relaxing tropical getaway.",
     price: 500,
   },
+  //spot 14
   {
     ownerId: 6,
     address: "606 Seaside Drive",
@@ -191,6 +205,7 @@ const spotData = [
       "A classic beach house with stunning sea views. Built with a traditional and charming design, it offers picturesque views of the sea from large windows that fill the house with natural light. Perfect for a timeless and serene beach experience.",
     price: 350,
   },
+  //spot 15
   {
     ownerId: 7,
     address: "707 Beachfront Blvd",
@@ -204,6 +219,7 @@ const spotData = [
       "A modern beach house with direct beach access. Constructed with a sleek and contemporary design, it provides direct access to the beach and features large windows that offer breathtaking views of the ocean. Ideal for a stylish and comfortable beach stay.",
     price: 400,
   },
+  //spot 16
   {
     ownerId: 8,
     address: "808 Oceanfront Avenue",
@@ -217,6 +233,7 @@ const spotData = [
       "A spacious beach house perfect for family vacations. Built with a roomy and comfortable design, it offers ample space for families and large windows that provide beautiful views of the beach. Ideal for a fun and memorable family vacation by the sea.",
     price: 320,
   },
+  //spot 17
   {
     ownerId: 1,
     address: "400 Forest Road",
@@ -230,6 +247,7 @@ const spotData = [
       "A serene campsite surrounded by towering trees. This peaceful retreat offers an immersive nature experience with large, open spaces perfect for camping. Enjoy the tranquility of the forest with plenty of opportunities for hiking and wildlife observation.",
     price: 120,
   },
+  //spot 18
   {
     ownerId: 2,
     address: "500 Mountain Path",
@@ -243,6 +261,7 @@ const spotData = [
       "A picturesque campsite with stunning mountain views. Nestled in a beautiful mountain setting, this campsite provides breathtaking vistas and ample space for outdoor activities. Perfect for those looking to escape into nature and enjoy the serenity of the mountains.",
     price: 180,
   },
+  //spot 19
   {
     ownerId: 3,
     address: "600 Lakeside Drive",
@@ -256,6 +275,7 @@ const spotData = [
       "A beautiful campsite by the lake with water activities. Enjoy the serene lake views and take part in various water activities such as kayaking, fishing, and swimming. This campsite offers a perfect blend of relaxation and adventure in a picturesque lakeside setting.",
     price: 200,
   },
+  //spot 20
   {
     ownerId: 4,
     address: "700 Desert Trail",
@@ -269,6 +289,7 @@ const spotData = [
       "A unique campsite in the heart of the desert. Experience the stark beauty of the desert landscape with stunning rock formations and vast open spaces. This campsite provides a one-of-a-kind camping experience with breathtaking desert views.",
     price: 150,
   },
+  //spot 21
   {
     ownerId: 5,
     address: "800 Canyon Road",
@@ -282,6 +303,7 @@ const spotData = [
       "A rugged campsite with breathtaking canyon views. Situated amidst dramatic canyon landscapes, this campsite offers stunning vistas and opportunities for hiking and exploring the rugged terrain. Perfect for adventurers seeking a memorable camping experience.",
     price: 170,
   },
+  //spot 22
   {
     ownerId: 7,
     address: "1000 Forest Path",

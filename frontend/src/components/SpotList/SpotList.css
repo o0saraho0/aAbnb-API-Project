@@ -1,14 +1,24 @@
-.spotlist_container {
+/* .spotlist_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
   gap: 20px;
   max-width: 1200px;
   margin: 30px auto;
+} */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
 }
 
 .spotlist_small_container {
-  width: 200px;
+  /* width: 200px; */
+  min-height: 18em;
+  max-width: auto;
 }
 
 .spotlist_small_container_link {
@@ -16,10 +26,18 @@
   color: black;
 }
 
+.spotlist_small_container {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+}
+
 .spotlist_small_container img {
-  height: 200px;
+  /* height: 200px;
   width: 200px;
-  object-fit: cover;
+  object-fit: cover; */
+  width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: 15px;
 }
 

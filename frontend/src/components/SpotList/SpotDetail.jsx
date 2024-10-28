@@ -5,6 +5,9 @@ import { loadOneSpot } from "../../store/spot";
 import { getSpotReviews } from "../../store/review";
 import SpotImage from "../SpotImage";
 import ReviewList from "../ReviewList/ReviewList";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import "./SpotDetail.css";
 
 const SpotDetail = () => {
@@ -32,12 +35,19 @@ const SpotDetail = () => {
     alert("Feature coming soon");
   };
 
+  // Fix for missing marker icons in Leaflet (optional if not visible by default)
+  delete L.Icon.Default.prototype._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+    iconRetinaUrl:
+      "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+  });
+
   return (
     <div className="spotdetail_container">
       <h2>{spot.name}</h2>
-      <p>
-        {spot.city}, {spot.state}, {spot.country}
-      </p>
+
       <SpotImage spotId={spotId} />
       <div className="spotdetail_small_container">
         <div className="spotdetail_description">
@@ -82,6 +92,28 @@ const SpotDetail = () => {
         </div>
       </div>
       <ReviewList spotId={spotId} />
+
+      <div className="map_container">
+        <h2>Where you&apos;ll be</h2>
+        <p>
+          {spot.city}, {spot.state}, {spot.country}
+        </p>
+        <MapContainer
+          center={[spot.lat, spot.lng]}
+          zoom={13}
+          style={{
+            height: "500px",
+            width: "100%",
+            borderRadius: "10px",
+            overflow: "hidden",
+          }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker position={[spot.lat, spot.lng]}>
+            <Popup>{spot.name}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
     </div>
   );
 };

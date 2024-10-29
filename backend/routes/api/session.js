@@ -53,6 +53,7 @@ router.post("/", validateLogin, async (req, res, next) => {
     id: user.id,
     firstName: user.firstName,
     lastName: user.lastName,
+    profilePic: user.profilePic,
     email: user.email,
     username: user.username,
   };
@@ -78,6 +79,7 @@ router.get("/", (req, res) => {
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
+      profilePic: user.profilePic,
       email: user.email,
       username: user.username,
     };

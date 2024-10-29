@@ -71,6 +71,7 @@ router.post("/", validateSignup, async (req, res) => {
     lastName,
     email,
     username,
+    profilePic,
     hashedPassword,
   });
 
@@ -78,6 +79,7 @@ router.post("/", validateSignup, async (req, res) => {
     firstName: user.firstName,
     lastName: user.lastName,
     id: user.id,
+    profilePic: user.profilePic,
     email: user.email,
     username: user.username,
   };

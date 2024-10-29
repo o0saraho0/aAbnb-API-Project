@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { loadCurrentSpots, deleteSpot } from "../../store/spot";
 import { useModal } from "../../context/Modal";
 import ConfirmDeleteModal from "../ConfirmDeletionModal";
+import { FaStar } from "react-icons/fa";
 import "./SpotList.css";
 
 const SpotManage = () => {
@@ -59,21 +60,26 @@ const SpotManage = () => {
                 className="spotlist_small_container_link"
               >
                 <img src={spot.previewImage} alt={spot.name} />
+              </Link>
 
-                <div className="spotlist_preview">
+              <div className="manage_spot_info">
+                <p>{spot.name}</p>
+                <div className="manage_spot_place">
                   <span>
                     {spot.city}, {spot.state}
                   </span>
                   <span>
-                    ⭐️{" "}
+                    <FaStar />{" "}
                     {spot.avgRating && spot.avgRating !== "No rating yet."
                       ? spot.avgRating
                       : "New"}
                   </span>
                 </div>
-                <span className="spotlist_preview_price">${spot.price}</span>
-                <span> night</span>
-              </Link>
+                <div className="manage-spot-price">
+                  <span className="spotlist_preview_price">${spot.price}</span>
+                  <span> night</span>
+                </div>
+              </div>
 
               <div className="current_spotlist_buttons">
                 <button>

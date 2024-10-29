@@ -5,6 +5,8 @@ import { useModal } from "../../context/Modal";
 import ConfirmDeleteModal from "../ConfirmDeletionModal";
 import ReviewFormModal from "../ReviewFormModal";
 import "./ReviewList.css";
+import StarRating from "../StarRating/StarRating";
+import { FaStar } from "react-icons/fa";
 
 const ReviewList = ({ spotId }) => {
   const dispatch = useDispatch();
@@ -64,7 +66,7 @@ const ReviewList = ({ spotId }) => {
       {hasReviews ? (
         <>
           <h3>
-            ⭐️ {averageRating} · {reviews.Reviews.length}{" "}
+            <FaStar /> {averageRating} · {reviews.Reviews.length}{" "}
             {reviews.Reviews.length === 1 ? "Review" : "Reviews"}
           </h3>
           {!hasReviewed && !isOwner && currentUser && (
@@ -85,11 +87,21 @@ const ReviewList = ({ spotId }) => {
 
               return (
                 <div key={review.id} className="reviewList_small_container">
-                  <h3>
-                    {review.User?.firstName ||
-                      (currentUser && currentUser.firstName)}
-                  </h3>
-                  <p>{formattedDate}</p>
+                  <div className="media-query">
+                    <div className="user_container">
+                      <img src={review.User.profilePic} alt="profile_pic" />
+                      <p>
+                        {review.User?.firstName ||
+                          (currentUser && currentUser.firstName)}
+                      </p>
+                    </div>
+
+                    <div className="star_container">
+                      <StarRating rating={review.stars} readOnly />
+                      <p> · {formattedDate}</p>
+                    </div>
+                  </div>
+
                   <p>{review.review}</p>
                   {currentUser &&
                     currentUser.id === review.userId &&

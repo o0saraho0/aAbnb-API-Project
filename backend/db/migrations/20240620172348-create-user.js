@@ -5,7 +5,6 @@ if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
 }
 
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
@@ -29,6 +28,11 @@ module.exports = {
           type: Sequelize.STRING(30),
           allowNull: false,
           unique: true,
+        },
+        profilePic: {
+          type: Sequelize.STRING(256),
+          allowNull: true,
+          defaultValue: "/images/profile0.jpg",
         },
         email: {
           type: Sequelize.STRING(256),

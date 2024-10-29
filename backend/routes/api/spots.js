@@ -126,7 +126,10 @@ router.get("/:spotId/reviews", async (req, res) => {
   const reviews = await Review.findAll({
     where: { spotId: req.params.spotId },
     include: [
-      { model: User, attributes: ["id", "firstName", "lastName"] },
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName", "profilePic"],
+      },
       { model: ReviewImage, attributes: ["id", "url"] },
     ],
   });
@@ -187,8 +190,6 @@ router.get("/:spotId/bookings", requireAuth, async (req, res) => {
     bookings.forEach((booking) => {
       booking.dataValues.startDate = formatDate(booking.dataValues.startDate);
       booking.dataValues.endDate = formatDate(booking.dataValues.endDate);
-      // booking.dataValues.createdAt = formatTime(booking.dataValues.createdAt);
-      // booking.dataValues.updatedAt = formatTime(booking.dataValues.updatedAt);
     });
     return res.status(200).json({ Bookings: bookings });
   } else {
@@ -344,7 +345,7 @@ router.get("/:spotId", async (req, res) => {
       { model: SpotImage },
       {
         model: User,
-        attributes: ["id", "firstName", "lastName"],
+        attributes: ["id", "firstName", "lastName", "profilePic"],
         as: "Owner",
       },
     ],
@@ -359,8 +360,6 @@ router.get("/:spotId", async (req, res) => {
   const reviews = await Review.findAll({
     where: { spotId: req.params.spotId },
   });
-  // console.log(reviews);
-  // console.log("numReviews ->", reviews.length);
   spot.dataValues.numReviews = reviews.length;
   spot.dataValues.createdAt = formatTime(spot.dataValues.createdAt);
   spot.dataValues.updatedAt = formatTime(spot.dataValues.updatedAt);
@@ -467,7 +466,7 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
   });
   newSpot.dataValues.createdAt = formatTime(newSpot.dataValues.createdAt);
   newSpot.dataValues.updatedAt = formatTime(newSpot.dataValues.updatedAt);
-  
+
   return res.status(201).json(newSpot);
 });
 

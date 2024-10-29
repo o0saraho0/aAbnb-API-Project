@@ -46,14 +46,21 @@ const SpotDetail = () => {
 
   return (
     <div className="spotdetail_container">
-      <h2>{spot.name}</h2>
+      <h1>{spot.name}</h1>
 
       <SpotImage spotId={spotId} />
       <div className="spotdetail_small_container">
         <div className="spotdetail_description">
-          <h2>
-            Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
-          </h2>
+          <h3>
+            {spot.city}, {spot.state}
+          </h3>
+          <div className="owner_container">
+            <img src={spot.Owner.profilePic} alt="profile" />
+            <p>
+              Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
+            </p>
+          </div>
+
           <p>{spot.description}</p>
         </div>
         <div className="reservation_container">
@@ -61,10 +68,6 @@ const SpotDetail = () => {
             <span id="spot_price">${spot.price}</span>
             <span>night</span>
           </div>
-
-          {/* <div className="reservation_rating">
-                    ⭐️ {averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}
-                </div> */}
 
           <div className="reservation_rating">
             ⭐️{" "}
@@ -99,13 +102,15 @@ const SpotDetail = () => {
           {spot.city}, {spot.state}, {spot.country}
         </p>
         <MapContainer
+          className="map"
           center={[spot.lat, spot.lng]}
           zoom={13}
           style={{
-            height: "500px",
+            height: "450px",
             width: "100%",
             borderRadius: "10px",
             overflow: "hidden",
+            zIndex: "0",
           }}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

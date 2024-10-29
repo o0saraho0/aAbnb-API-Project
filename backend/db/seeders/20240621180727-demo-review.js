@@ -257,7 +257,7 @@ const reviewData = [
   },
   {
     spotId: 21,
-    userId: 5,
+    userId: 2,
     review:
       "Canyon Camp was an incredible spot. The canyon views were stunning, and the site was well-maintained. Highly recommend for an adventurous camping trip.",
     stars: 5,

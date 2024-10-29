@@ -19,6 +19,7 @@ const spotData = [
     lat: 45.5051,
     lng: -122.675,
     name: "Forest Retreat",
+    category: "Tree Houses",
     description:
       "A charming and cozy tree house nestled high up in the dense forest canopy. The tree house is constructed from rustic, natural wood, blending seamlessly with its surroundings. Large windows offer breathtaking views of the lush greenery and allow plenty of natural light to flood in.",
     price: 150,
@@ -33,6 +34,7 @@ const spotData = [
     lat: 35.5951,
     lng: -82.5515,
     name: "Mountain Tree House",
+    category: "Tree Houses",
     description:
       "An elevated tree house with mountain views. Constructed from rustic, natural wood, it blends seamlessly with its surroundings. Large windows offer breathtaking views of the mountains and allow plenty of natural light to flood in.",
     price: 200,
@@ -47,6 +49,7 @@ const spotData = [
     lat: 40.015,
     lng: -105.2705,
     name: "Nature's Nest",
+    category: "Tree Houses",
     description:
       "A peaceful tree house surrounded by nature. Built with natural wood, it integrates harmoniously with the forest. Large windows provide stunning views of the surrounding greenery and let in ample sunlight.",
     price: 175,
@@ -61,6 +64,7 @@ const spotData = [
     lat: 40.8021,
     lng: -124.1637,
     name: "Redwood Retreat",
+    category: "Tree Houses",
     description:
       "A tree house high in the redwoods with stunning views. Crafted from rustic, natural wood, it blends perfectly with the majestic redwoods. Large windows offer breathtaking views and plenty of natural light.",
     price: 225,
@@ -75,6 +79,7 @@ const spotData = [
     lat: 32.0809,
     lng: -81.0912,
     name: "Willow Tree House",
+    category: "Tree Houses",
     description:
       "A charming tree house surrounded by willow trees. Made from natural wood, it harmonizes with the graceful willow trees. Large windows provide beautiful views and let in abundant sunlight.",
     price: 195,
@@ -89,6 +94,7 @@ const spotData = [
     lat: 44.4759,
     lng: -73.2121,
     name: "Maple Tree Haven",
+    category: "Tree Houses",
     description:
       "A peaceful tree house nestled among maple trees. Constructed from rustic wood, it blends seamlessly with the maple grove. Large windows offer picturesque views and allow plenty of natural light.",
     price: 180,
@@ -103,6 +109,7 @@ const spotData = [
     lat: 35.1983,
     lng: -111.6513,
     name: "Cedar Tree Escape",
+    category: "Tree Houses",
     description:
       "A unique tree house in a cedar forest with mountain views. Built from natural wood, it fits perfectly among the cedar trees. Large windows provide breathtaking views and let in plenty of sunlight.",
     price: 210,
@@ -117,6 +124,7 @@ const spotData = [
     lat: 44.2795,
     lng: -73.9799,
     name: "Pine Tree Lodge",
+    category: "Tree Houses",
     description:
       "A cozy tree house in the Adirondacks with lake views. Made from rustic wood, it integrates well with the surrounding pines. Large windows offer stunning views of the lake and allow ample natural light.",
     price: 230,
@@ -131,6 +139,7 @@ const spotData = [
     lat: 25.7617,
     lng: -80.1918,
     name: "Ocean Breeze",
+    category: "Beachfront",
     description:
       "A luxurious beach house with ocean views. Constructed with elegant design, it offers direct views of the ocean from large windows that flood the space with natural light. The perfect getaway for a serene and opulent beach experience.",
     price: 300,
@@ -145,6 +154,7 @@ const spotData = [
     lat: 34.0195,
     lng: -118.4912,
     name: "Sunset Villa",
+    category: "Beachfront",
     description:
       "A charming beach house perfect for watching sunsets. Built with a cozy and inviting design, it features large windows that offer stunning views of the sunset over the ocean. Ideal for a romantic and tranquil beach stay.",
     price: 250,
@@ -159,6 +169,7 @@ const spotData = [
     lat: 36.8529,
     lng: -75.978,
     name: "Coastal Escape",
+    category: "Beachfront",
     description:
       "A relaxing beach house with direct access to the beach. Constructed with a soothing design, it provides easy access to the beach and features large windows that let in ample natural light. Perfect for a peaceful beachside retreat.",
     price: 275,
@@ -173,6 +184,7 @@ const spotData = [
     lat: 34.0259,
     lng: -118.7798,
     name: "Malibu Beach House",
+    category: "Beachfront",
     description:
       "A stunning beach house with panoramic ocean views. Built with a luxurious and modern design, it offers breathtaking views of the ocean from large windows. An exquisite location for a lavish and scenic beach escape.",
     price: 450,
@@ -187,6 +199,7 @@ const spotData = [
     lat: 20.7984,
     lng: -156.3319,
     name: "Maui Beach Retreat",
+    category: "Beachfront",
     description:
       "A tropical beach house with private beach access. Constructed with a vibrant and tropical design, it features direct access to a private beach and large windows that provide stunning views of the ocean. Ideal for an exclusive and relaxing tropical getaway.",
     price: 500,
@@ -201,6 +214,7 @@ const spotData = [
     lat: 41.6688,
     lng: -70.2962,
     name: "Cape Cod Beach House",
+    category: "Beachfront",
     description:
       "A classic beach house with stunning sea views. Built with a traditional and charming design, it offers picturesque views of the sea from large windows that fill the house with natural light. Perfect for a timeless and serene beach experience.",
     price: 350,
@@ -215,6 +229,7 @@ const spotData = [
     lat: 32.7157,
     lng: -117.1611,
     name: "San Diego Beach House",
+    category: "Beachfront",
     description:
       "A modern beach house with direct beach access. Constructed with a sleek and contemporary design, it provides direct access to the beach and features large windows that offer breathtaking views of the ocean. Ideal for a stylish and comfortable beach stay.",
     price: 400,
@@ -229,6 +244,7 @@ const spotData = [
     lat: 33.6891,
     lng: -78.8867,
     name: "Myrtle Beach Getaway",
+    category: "Beachfront",
     description:
       "A spacious beach house perfect for family vacations. Built with a roomy and comfortable design, it offers ample space for families and large windows that provide beautiful views of the beach. Ideal for a fun and memorable family vacation by the sea.",
     price: 320,
@@ -243,6 +259,7 @@ const spotData = [
     lat: 44.0582,
     lng: -121.3153,
     name: "Woodland Camping",
+    category: "Camping",
     description:
       "A serene campsite surrounded by towering trees. This peaceful retreat offers an immersive nature experience with large, open spaces perfect for camping. Enjoy the tranquility of the forest with plenty of opportunities for hiking and wildlife observation.",
     price: 120,
@@ -257,6 +274,7 @@ const spotData = [
     lat: 43.4799,
     lng: -110.7624,
     name: "Mountain Retreat",
+    category: "Camping",
     description:
       "A picturesque campsite with stunning mountain views. Nestled in a beautiful mountain setting, this campsite provides breathtaking vistas and ample space for outdoor activities. Perfect for those looking to escape into nature and enjoy the serenity of the mountains.",
     price: 180,
@@ -271,6 +289,7 @@ const spotData = [
     lat: 39.0968,
     lng: -120.0324,
     name: "Lakeside Camp",
+    category: "Camping",
     description:
       "A beautiful campsite by the lake with water activities. Enjoy the serene lake views and take part in various water activities such as kayaking, fishing, and swimming. This campsite offers a perfect blend of relaxation and adventure in a picturesque lakeside setting.",
     price: 200,
@@ -285,6 +304,7 @@ const spotData = [
     lat: 34.8697,
     lng: -111.761,
     name: "Desert Oasis",
+    category: "Camping",
     description:
       "A unique campsite in the heart of the desert. Experience the stark beauty of the desert landscape with stunning rock formations and vast open spaces. This campsite provides a one-of-a-kind camping experience with breathtaking desert views.",
     price: 150,
@@ -299,6 +319,7 @@ const spotData = [
     lat: 38.5733,
     lng: -109.5498,
     name: "Canyon Camp",
+    category: "Camping",
     description:
       "A rugged campsite with breathtaking canyon views. Situated amidst dramatic canyon landscapes, this campsite offers stunning vistas and opportunities for hiking and exploring the rugged terrain. Perfect for adventurers seeking a memorable camping experience.",
     price: 170,
@@ -313,6 +334,7 @@ const spotData = [
     lat: 37.8651,
     lng: -119.5383,
     name: "Yosemite Camp",
+    category: "Camping",
     description:
       "A rustic campsite in Yosemite with hiking trails. This campsite is nestled within the majestic landscapes of Yosemite, offering direct access to numerous hiking trails. Perfect for nature enthusiasts looking to explore the park and enjoy rustic camping amidst breathtaking scenery.",
     price: 190,

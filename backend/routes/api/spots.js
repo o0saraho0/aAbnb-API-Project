@@ -112,7 +112,6 @@ const validateQuery = [
 ];
 
 const router = express.Router();
-// Spot.dataValues.previewImage = "";
 
 // Get all Reviews by a Spot's id
 router.get("/:spotId/reviews", async (req, res) => {
@@ -427,6 +426,7 @@ router.get("/", validateQuery, async (req, res) => {
       lat: spot.lat,
       lng: spot.lng,
       name: spot.name,
+      category: spot.category,
       description: spot.description,
       price: spot.price,
       createdAt: formatTime(spot.createdAt),

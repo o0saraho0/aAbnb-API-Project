@@ -71,3 +71,7 @@
   width: 20px;
   cursor: pointer;
 }
+
+.user_icon svg {
+  font-size: 1.5rem;
+}

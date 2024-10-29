@@ -14,6 +14,7 @@ footer {
 
 .footer-max h3 {
   margin-left: -200px;
+  margin-bottom: 5px;
 }
 
 .footer-content {
@@ -82,15 +83,17 @@ footer {
   .footer-max {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    text-align: left;
+    gap: 10px;
   }
 
   .footer-max h3 {
-    margin-left: 0px;
+    text-align: center;
   }
 
   .footer-content {
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }

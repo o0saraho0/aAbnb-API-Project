@@ -41,56 +41,64 @@ const SpotManage = () => {
   };
 
   return (
-    <div className="current_spotlist_container">
-      <div className="manage-header">
-        <h1>Manage Spots</h1>
-        <button>
-          <Link to={"/spots/new"}>Create a New Spot</Link>
-        </button>
+    <div className="current_spotlist_container host-container">
+      <div className="host-profile">
+        <img src={currentUser.profilePic} alt="user-profile" />
+        <h1>Hello, {currentUser.firstName}</h1>
       </div>
+      <div className="listing-section">
+        <div className="manage-header">
+          <h1>Your listings</h1>
+          <button>
+            <Link to={"/spots/new"}>Create a New Listing</Link>
+          </button>
+        </div>
 
-      <div className="current_image_container">
-        {filteredSpots
-          .sort((a, b) => b.id - a.id)
-          .map((spot) => (
-            <div key={spot.id} className="spotlist_small_container">
-              <Link
-                key={spot.id}
-                to={`/spots/${spot.id}`}
-                className="spotlist_small_container_link"
-              >
-                <img src={spot.previewImage} alt={spot.name} />
-              </Link>
+        <div className="current_image_container">
+          {filteredSpots
+            .sort((a, b) => b.id - a.id)
+            .map((spot) => (
+              <div key={spot.id} className="spotlist_small_container">
+                <Link
+                  key={spot.id}
+                  to={`/spots/${spot.id}`}
+                  className="spotlist_small_container_link"
+                >
+                  <img src={spot.previewImage} alt={spot.name} />
+                </Link>
 
-              <div className="manage_spot_info">
-                <p>{spot.name}</p>
-                <div className="manage_spot_place">
-                  <span>
-                    {spot.city}, {spot.state}
-                  </span>
-                  <span>
-                    <FaStar />{" "}
-                    {spot.avgRating && spot.avgRating !== "No rating yet."
-                      ? spot.avgRating
-                      : "New"}
-                  </span>
+                <div className="manage_spot_info">
+                  <p>{spot.name}</p>
+                  <div className="manage_spot_place">
+                    <span>
+                      {spot.city}, {spot.state}
+                    </span>
+                    <span>
+                      <FaStar />{" "}
+                      {spot.avgRating && spot.avgRating !== "No rating yet."
+                        ? spot.avgRating
+                        : "New"}
+                    </span>
+                  </div>
+                  <div className="manage-spot-price">
+                    <span className="spotlist_preview_price">
+                      ${spot.price}
+                    </span>
+                    <span> night</span>
+                  </div>
                 </div>
-                <div className="manage-spot-price">
-                  <span className="spotlist_preview_price">${spot.price}</span>
-                  <span> night</span>
+
+                <div className="current_spotlist_buttons">
+                  <button>
+                    <Link to={`/spots/${spot.id}/edit`}>Update</Link>
+                  </button>
+                  <button onClick={() => handleDeleteClick(spot.id)}>
+                    Delete
+                  </button>
                 </div>
               </div>
-
-              <div className="current_spotlist_buttons">
-                <button>
-                  <Link to={`/spots/${spot.id}/edit`}>Update</Link>
-                </button>
-                <button onClick={() => handleDeleteClick(spot.id)}>
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );

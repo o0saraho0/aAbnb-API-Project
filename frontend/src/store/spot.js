@@ -4,6 +4,7 @@ const LOAD_SPOT = "spot/LOAD_SPOT";
 const LOAD_ONE_SPOT = "spot/LOAD_ONE_SPOT";
 const CREATE_SPOT = "spot/CREATE_SPOT";
 const DELETE_SPOT = "spot/DELETE_SPOT";
+const CLEAR_SPOTS = "CLEAR_SPOTS";
 
 const CREATE_IMAGE = "image/CREATE_IMAGE";
 
@@ -78,6 +79,18 @@ export const loadCurrentSpots = () => async (dispatch) => {
   }
 };
 
+export const loadHostSpots = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/host/${userId}`);
+  if (response.ok) {
+    const spots = await response.json();
+    dispatch(loadSpot(spots.Spots));
+    return spots;
+  } else {
+    const error = await response.json();
+    return error;
+  }
+};
+
 export const createSpot = (spot) => async (dispatch) => {
   const response = await csrfFetch("/api/spots", {
     method: "POST",
@@ -96,7 +109,6 @@ export const createSpot = (spot) => async (dispatch) => {
 };
 
 export const editSpot = (spot) => async (dispatch) => {
-  // console.log("spot in store", spot);
   const response = await csrfFetch(`/api/spots/${spot.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -105,7 +117,6 @@ export const editSpot = (spot) => async (dispatch) => {
   if (response.ok) {
     const updatedSpot = await response.json();
     dispatch(addSpot(updatedSpot));
-    // console.log("updated? -->", updatedSpot);
     return updatedSpot;
   } else {
     const error = await response.json();
@@ -126,9 +137,10 @@ export const deleteSpot = (spotId) => async (dispatch) => {
   }
 };
 
+export const clearSpots = () => ({ type: "CLEAR_SPOTS" });
+
 // Add Image Thunk
 export const addImage = (image) => async (dispatch) => {
-  // console.log("image in store", image);
   const { spotId, url, preview } = image;
   const response = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: "POST",
@@ -137,12 +149,10 @@ export const addImage = (image) => async (dispatch) => {
   });
   if (response.ok) {
     const newImage = await response.json();
-    // console.log("newImage in store", newImage);
     dispatch(createImage(newImage));
     return newImage;
   } else {
     const error = await response.json();
-    // console.log("error--->", error);
     return error;
   }
 };
@@ -174,22 +184,11 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
     }
     case CREATE_IMAGE: {
-      // console.log("in the reducer", newState);
       return { ...state, [action.payload.id]: action.image };
     }
-
-    //  Shanda's:
-    //  ADD_SPOTIMAGES: {
-    //   const newState = { ...state };
-    //   const { spotId, url, preview } = action.payload;
-    //   if (spotId && newState.spots[spotId]) {
-    //     newState.spots[spotId].SpotImages = [
-    //       ...(newState.spots[spotId].SpotImages || []),
-    //       { url, preview },
-    //     ];
-    //   }
-    // return newState;
-    // }
+    case CLEAR_SPOTS: {
+      return {};
+    }
 
     default:
       return state;

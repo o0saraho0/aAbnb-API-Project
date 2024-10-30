@@ -9,7 +9,7 @@ import SpotDetail from "./components/SpotList/SpotDetail";
 import CreateSpot from "./components/SpotForm/CreateSpot";
 import SpotManage from "./components/SpotList/SpotManage";
 import EditSpot from "./components/SpotForm/EditSpot";
-import ReviewManage from "./components/ReviewList/ReviewManage";
+import SpotByHost from "./components/SpotList/SpotByHost";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -36,19 +36,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: (
-          <div className="grid-container">
-            <SpotList />
-          </div>
-        ),
+        element: <SpotList />,
       },
       {
         path: "/spots/:spotId",
-        element: (
-          <div className="spotdetail_container">
-            <SpotDetail />
-          </div>
-        ),
+        element: <SpotDetail />,
       },
       {
         path: "/spots/new",
@@ -63,8 +55,8 @@ const router = createBrowserRouter([
         element: <SpotManage />,
       },
       {
-        path: "/reviews/current",
-        element: <ReviewManage />,
+        path: "/spots/host/:userId",
+        element: <SpotByHost />,
       },
     ],
   },

@@ -337,6 +337,66 @@ router.get("/current", requireAuth, async (req, res) => {
   return res.status(200).json({ Spots: spotsWithDetails });
 });
 
+// Get all Spots Owned by Host
+router.get("/host/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const spots = await Spot.findAll({
+    where: { ownerId: userId },
+    attributes: {
+      include: [
+        [Sequelize.fn("AVG", Sequelize.col("Reviews.stars")), "avgRating"],
+      ],
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName", "profilePic"],
+        as: "Owner",
+      },
+      {
+        model: Review,
+        attributes: [],
+      },
+      {
+        model: SpotImage,
+        attributes: ["url"],
+        where: { preview: true },
+        required: false,
+      },
+    ],
+    group: ["Spot.id", "SpotImages.id"],
+    subQuery: false,
+  });
+
+  const spotsWithDetails = spots.map((spot) => {
+    return {
+      id: spot.id,
+      ownerId: spot.ownerId,
+      city: spot.city,
+      state: spot.state,
+      country: spot.country,
+      name: spot.name,
+      price: spot.price,
+      avgRating: spot.dataValues.avgRating
+        ? parseFloat(spot.dataValues.avgRating).toFixed(1)
+        : "No rating yet.",
+      previewImage: spot.SpotImages.length
+        ? spot.SpotImages[0].url
+        : "No preview image yet.",
+      owner: {
+        id: spot.Owner.id,
+        firstName: spot.Owner.firstName,
+        lastName: spot.Owner.lastName,
+        profilePic: spot.Owner.profilePic,
+      },
+    };
+  });
+
+  return res.status(200).json({
+    Spots: spotsWithDetails,
+  });
+});
+
 // Get details of a Spot from an id
 router.get("/:spotId", async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId, {

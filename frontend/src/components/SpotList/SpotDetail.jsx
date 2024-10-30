@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { loadOneSpot } from "../../store/spot";
 import { getSpotReviews } from "../../store/review";
 import SpotImage from "../SpotImage";
@@ -13,6 +13,7 @@ import "./SpotDetail.css";
 const SpotDetail = () => {
   const { spotId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const spot = useSelector((state) => state.spots[spotId]);
   const reviews = useSelector((state) => state.reviews[spotId]);
@@ -30,6 +31,10 @@ const SpotDetail = () => {
   }, [dispatch, spotId]);
 
   if (!spot || !spot.Owner) return null;
+
+  const handleOwnerClick = () => {
+    navigate(`/spots/host/${spot.Owner.id}`);
+  };
 
   const handleReservation = () => {
     alert("Feature coming soon");
@@ -54,7 +59,7 @@ const SpotDetail = () => {
           <h3>
             {spot.city}, {spot.state}
           </h3>
-          <div className="owner_container">
+          <div className="owner_container" onClick={handleOwnerClick}>
             <img src={spot.Owner.profilePic} alt="profile" />
             <p>
               Hosted by {spot.Owner.firstName} {spot.Owner.lastName}

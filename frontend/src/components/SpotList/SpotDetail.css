@@ -44,11 +44,13 @@ h3 {
   width: 50px;
   border-radius: 100px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .owner_container p {
   font-weight: 500;
   margin-top: 0px;
+  cursor: pointer;
 }
 
 .reservation_container {

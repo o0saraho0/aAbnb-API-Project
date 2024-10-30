@@ -72,6 +72,12 @@
   justify-content: space-between;
 }
 
+.spotlist_preview_star {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
 .spotlist_preview_price {
   font-weight: 550;
 }

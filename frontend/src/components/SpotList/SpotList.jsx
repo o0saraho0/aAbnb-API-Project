@@ -6,7 +6,7 @@ import { FaTree } from "react-icons/fa6";
 import { FaUmbrellaBeach } from "react-icons/fa";
 import { GiCampingTent } from "react-icons/gi";
 import { FaHouse } from "react-icons/fa6";
-
+import { FaStar } from "react-icons/fa";
 import "./SpotList.css";
 
 const SpotList = () => {
@@ -84,8 +84,8 @@ const SpotList = () => {
                     <div>
                       {spot.city}, {spot.state}
                     </div>
-                    <div>
-                      ⭐️{" "}
+                    <div className="spotlist_preview_star">
+                      <FaStar />
                       {spot.avgRating && spot.avgRating !== "No rating yet."
                         ? spot.avgRating
                         : "New"}

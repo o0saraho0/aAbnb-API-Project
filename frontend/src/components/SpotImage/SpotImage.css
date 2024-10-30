@@ -17,6 +17,10 @@ img {
   object-fit: cover;
 }
 
+.spotdetail_image_container img:hover {
+  cursor: pointer;
+}
+
 .large_image {
   grid-column: span 2;
   grid-row: span 2;

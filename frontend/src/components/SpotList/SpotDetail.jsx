@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { loadOneSpot } from "../../store/spot";
 import { getSpotReviews } from "../../store/review";
 import SpotImage from "../SpotImage";
@@ -13,7 +13,7 @@ import "./SpotDetail.css";
 const SpotDetail = () => {
   const { spotId } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const spot = useSelector((state) => state.spots[spotId]);
   const reviews = useSelector((state) => state.reviews[spotId]);

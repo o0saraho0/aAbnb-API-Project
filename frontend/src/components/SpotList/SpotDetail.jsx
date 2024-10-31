@@ -32,9 +32,9 @@ const SpotDetail = () => {
 
   if (!spot || !spot.Owner) return null;
 
-  const handleOwnerClick = () => {
-    navigate(`/spots/host/${spot.Owner.id}`);
-  };
+  // const handleOwnerClick = () => {
+  //   navigate(`/spots/host/${spot.Owner.id}`);
+  // };
 
   const handleReservation = () => {
     alert("Feature coming soon");
@@ -59,7 +59,7 @@ const SpotDetail = () => {
           <h3>
             {spot.city}, {spot.state}
           </h3>
-          <div className="owner_container" onClick={handleOwnerClick}>
+          <div className="owner_container">
             <img src={spot.Owner.profilePic} alt="profile" />
             <p>
               Hosted by {spot.Owner.firstName} {spot.Owner.lastName}

@@ -64,7 +64,9 @@ const SpotManage = () => {
                   to={`/spots/${spot.id}`}
                   className="spotlist_small_container_link"
                 >
-                  <img src={spot.previewImage} alt={spot.name} />
+                  <div className="spot_small_container_img">
+                    <img src={spot.previewImage} alt={spot.name} />
+                  </div>
                 </Link>
 
                 <div className="manage_spot_info">

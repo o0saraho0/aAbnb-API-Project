@@ -51,6 +51,16 @@
   object-fit: cover;
   aspect-ratio: 4 / 3;
   border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.spotlist_small_container img:hover {
+  transform: scale(1.1);
+}
+
+.spot_small_container_img {
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 .spotlist_small_container h4 {
@@ -88,7 +98,6 @@
   margin-bottom: 70px;
   padding: 0px 10px;
 }
-
 
 .current_image_container {
   display: grid;

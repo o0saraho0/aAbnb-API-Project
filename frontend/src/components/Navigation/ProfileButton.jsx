@@ -67,7 +67,7 @@ function ProfileButton({ user }) {
 
             <div className="clickable">
               <li>
-                <Link to={"/spots/current"}>Manage Spots</Link>
+                <Link to={"/spots/current"}>Manage Listings</Link>
               </li>
               <li>
                 <div onClick={logout}>Log Out</div>

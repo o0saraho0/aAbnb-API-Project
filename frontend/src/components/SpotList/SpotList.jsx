@@ -77,7 +77,9 @@ const SpotList = () => {
                 to={`/spots/${spot?.id}`}
                 className="spotlist_small_container_link"
               >
-                <img src={spot.previewImage} alt={spot.name} />
+                <div className="spot_small_container_img">
+                  <img src={spot.previewImage} alt={spot.name} />
+                </div>
 
                 <div className="spotlist_desc">
                   <div className="spotlist_preview">

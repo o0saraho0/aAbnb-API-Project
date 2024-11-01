@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_ALL_REVIEWS = "spot/LOAD_ALL_REVIEWS";
+const LOAD_USER_REVIEWS = "spot/LOAD_USER_REVIEWS";
 const CREATE_REVIEW = "spot/CREATE_REVIEW";
 const DELETE_REVIEW = "spot/DELETE_REVIEW";
 
@@ -13,7 +14,7 @@ const loadSpotReviews = ({ spotId, reviews }) => {
 
 const loadUserReviews = ({ userId, reviews }) => {
   return {
-    type: LOAD_ALL_REVIEWS,
+    type: LOAD_USER_REVIEWS,
     reviews: { userId, reviews },
   };
 };
@@ -95,6 +96,13 @@ const reviewsReducer = (state = initialState, action) => {
       return {
         ...state,
         [spotId]: reviews,
+      };
+    }
+    case LOAD_USER_REVIEWS: {
+      const { userId, reviews } = action.reviews;
+      return {
+        ...state,
+        [userId]: reviews,
       };
     }
     case CREATE_REVIEW: {

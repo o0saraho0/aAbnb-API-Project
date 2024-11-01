@@ -16,6 +16,10 @@
 .category-choice {
   text-align: center;
   color: #484848;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .category-choice:hover {
@@ -90,6 +94,21 @@
 
 .spotlist_preview_price {
   font-weight: 550;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.active-tab {
+  color: #484848;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .current_spotlist_container {
@@ -167,4 +186,24 @@
 .current_spotlist_buttons button:hover {
   cursor: pointer;
   background-color: #fb7a7e;
+}
+
+.review-manage img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.review-manage p {
+  margin-bottom: 5px;
+}
+
+.review-manage-name {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.review-manage-time {
+  font-style: italic;
 }

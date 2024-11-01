@@ -30,7 +30,10 @@ router.get("/current", requireAuth, async (req, res) => {
   const reviews = await Review.findAll({
     where: { userId: user.id },
     include: [
-      { model: User, attributes: ["id", "firstName", "lastName"] },
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName", "profilePic"],
+      },
       {
         model: Spot,
         attributes: { exclude: ["description", "createdAt", "updatedAt"] },
@@ -54,9 +57,12 @@ router.get("/current", requireAuth, async (req, res) => {
         ? reviewJson.Spot.SpotImages[0].url
         : "No preview image yet.";
     const reviewImages =
-        reviewJson.ReviewImages.length > 0
-          ? reviewJson.ReviewImages.map(image => ({ id: image.id, url: image.url }))
-          : "No review image yet.";
+      reviewJson.ReviewImages.length > 0
+        ? reviewJson.ReviewImages.map((image) => ({
+            id: image.id,
+            url: image.url,
+          }))
+        : "No review image yet.";
 
     return {
       id: reviewJson.id,

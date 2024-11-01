@@ -188,11 +188,21 @@
   background-color: #fb7a7e;
 }
 
+.review-manage {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.review-manage-content {
+  width: 90%;
+}
+
 .review-manage img {
-  width: 100%;
+  width: 85%;
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .review-manage p {

@@ -144,18 +144,20 @@ const SpotManage = () => {
             <div className="manage-header"></div>
             <h1>Reviews you posted</h1>
             <div>
-              <div className="current_image_container">
+              <div>
                 {reviews.map((review) => (
                   <div key={review.id} className="review-manage">
                     <Link to={`/spots/${review.Spot.id}`}>
                       <img src={review.Spot.previewImage} alt="spot-preview" />
                     </Link>
-                    <p className="review-manage-name">{review.Spot.name}</p>
-                    <p className="review-manage-time">
-                      {review.updatedAt.slice(0, 10)}
-                    </p>
+                    <div className="review-manage-content">
+                      <p className="review-manage-name">{review.Spot.name}</p>
+                      <p className="review-manage-time">
+                        {review.updatedAt.slice(0, 10)}
+                      </p>
 
-                    <p>{review.review}</p>
+                      <p>{review.review}</p>
+                    </div>
                   </div>
                 ))}
               </div>

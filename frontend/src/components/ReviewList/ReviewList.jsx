@@ -97,7 +97,7 @@ const ReviewList = ({ spotId }) => {
                         alt="profile_pic"
                       />
                       <p>
-                        {(review.User && review.User?.firstName) ||
+                        {(review.User && review.User.firstName) ||
                           (currentUser && currentUser.firstName)}
                       </p>
                     </div>

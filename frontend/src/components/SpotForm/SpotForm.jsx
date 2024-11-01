@@ -248,6 +248,11 @@ const SpotForm = ({ spot, formType }) => {
                 placeholder="Preview Image URL"
                 onChange={(e) => setPreviewImage(e.target.value)}
               />
+              {previewImage && (
+                <div className="image_preview">
+                  <img src={previewImage} alt="Preview" />
+                </div>
+              )}
               {errors.previewurl && (
                 <p className="error_message">{errors.previewurl}</p>
               )}
@@ -258,6 +263,11 @@ const SpotForm = ({ spot, formType }) => {
                 placeholder="Image URL"
                 onChange={(e) => setImage2(e.target.value)}
               />
+              {image2 && (
+                <div className="image_preview">
+                  <img src={image2} alt="image" />
+                </div>
+              )}
               <input
                 id="image3"
                 name="image3"
@@ -265,6 +275,11 @@ const SpotForm = ({ spot, formType }) => {
                 placeholder="Image URL"
                 onChange={(e) => setImage3(e.target.value)}
               />
+              {image3 && (
+                <div className="image_preview">
+                  <img src={image3} alt="image" />
+                </div>
+              )}
               <input
                 id="image4"
                 name="image4"
@@ -272,6 +287,11 @@ const SpotForm = ({ spot, formType }) => {
                 placeholder="Image URL"
                 onChange={(e) => setImage4(e.target.value)}
               />
+              {image4 && (
+                <div className="image_preview">
+                  <img src={image4} alt="image" />
+                </div>
+              )}
               <input
                 id="image5"
                 name="image5"
@@ -279,6 +299,11 @@ const SpotForm = ({ spot, formType }) => {
                 placeholder="Image URL"
                 onChange={(e) => setImage5(e.target.value)}
               />
+              {image5 && (
+                <div className="image_preview">
+                  <img src={image5} alt="image" />
+                </div>
+              )}
             </label>
           </div>
         ) : (

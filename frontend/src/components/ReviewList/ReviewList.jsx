@@ -89,9 +89,15 @@ const ReviewList = ({ spotId }) => {
                 <div key={review.id} className="reviewList_small_container">
                   <div className="media-query">
                     <div className="user_container">
-                      <img src={review.User.profilePic} alt="profile_pic" />
+                      <img
+                        src={
+                          (review.User && review.User.profilePic) ||
+                          (currentUser && currentUser.profilePic)
+                        }
+                        alt="profile_pic"
+                      />
                       <p>
-                        {review.User?.firstName ||
+                        {(review.User && review.User.firstName) ||
                           (currentUser && currentUser.firstName)}
                       </p>
                     </div>

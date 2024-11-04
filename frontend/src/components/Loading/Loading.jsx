@@ -7,10 +7,10 @@ function Loading() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "70vh",
+        height: "80vh",
       }}
     >
-      <CircleLoader color="#ff5a60" loading size={60} speedMultiplier={1} />
+      <CircleLoader color="#ff5a60" loading size={70} speedMultiplier={1} />
     </div>
   );
 }

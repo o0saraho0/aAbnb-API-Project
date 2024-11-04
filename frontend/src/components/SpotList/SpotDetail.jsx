@@ -9,6 +9,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./SpotDetail.css";
+import Loading from "../Loading/Loading";
 
 const SpotDetail = () => {
   const { spotId } = useParams();
@@ -30,7 +31,7 @@ const SpotDetail = () => {
     dispatch(getSpotReviews(spotId));
   }, [dispatch, spotId]);
 
-  if (!spot || !spot.Owner) return null;
+  if (!spot || !spot.Owner) return <Loading />;
 
   // const handleOwnerClick = () => {
   //   navigate(`/spots/host/${spot.Owner.id}`);

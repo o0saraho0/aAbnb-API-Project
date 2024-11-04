@@ -8,6 +8,7 @@ import ConfirmDeleteModal from "../ConfirmDeletionModal";
 import { FaStar } from "react-icons/fa";
 import { FaHouseChimney } from "react-icons/fa6";
 import { MdRateReview } from "react-icons/md";
+import Loading from "../Loading/Loading";
 
 import "./SpotList.css";
 
@@ -34,7 +35,7 @@ const SpotManage = () => {
     }
   }, [dispatch, currentUser]);
 
-  if (!spots) return null;
+  if (!spots) return <Loading />;
   if (!reviews) return null;
 
   const handleDeleteClick = (spotId) => {

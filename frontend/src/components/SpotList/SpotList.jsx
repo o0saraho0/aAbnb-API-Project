@@ -8,6 +8,7 @@ import { GiCampingTent } from "react-icons/gi";
 import { FaHouse } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import "./SpotList.css";
+import Loading from "../Loading/Loading";
 
 const SpotList = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const SpotList = () => {
     dispatch(loadAllSpots());
   }, [dispatch]);
 
-  if (!spots) return null;
+  if (!spots) return <Loading />;
 
   const filteredSpots = selectedCategory
     ? spotsArray.filter((spot) => spot.category === selectedCategory)

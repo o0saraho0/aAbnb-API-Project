@@ -22,11 +22,11 @@ const SpotList = () => {
     dispatch(loadAllSpots());
   }, [dispatch]);
 
-  if (!spots) return <Loading />;
-
   const filteredSpots = selectedCategory
     ? spotsArray.filter((spot) => spot.category === selectedCategory)
     : spotsArray;
+
+  if (!filteredSpots) return <Loading />;
 
   return (
     <div className="spotlist-container">

@@ -1,5 +1,5 @@
 footer {
-  height: 12vh;
+  height: 13vh;
   background-color: rgb(247, 245, 245);
   padding: 25px 50px 30px 50px;
   display: flex;
@@ -64,6 +64,10 @@ footer {
   color: #ff5a60;
   display: inline-block;
   transition: transform 0.3s ease;
+}
+
+.sarah-contact svg {
+  font-size: larger;
 }
 
 .sarah-contact a:hover {
